@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- ABOUTME: Single-column, selectable-text AI internship resume using verified project evidence. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Milind Bansal — AI Engineering Internship Resume</title>
+  <style>
+    @page { size: A4; margin: 14mm 16mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202629; background: #fff; font: 10pt/1.25 Helvetica, sans-serif; }
+    main { max-width: 176mm; margin: auto; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font: bold 25pt/1.08 Georgia, serif; letter-spacing: -0.5pt; }
+    .contact { margin-top: 7pt; font-size: 9.3pt; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid #202629; outline-offset: 2px; }
+    h2 { margin: 10pt 0 5pt; padding-bottom: 3pt; border-bottom: 0.7pt solid #687174; font-size: 9.5pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; }
+    h3 { font-size: 11pt; font-weight: 750; }
+    .subline { margin-top: 2pt; font-size: 9.5pt; color: #394448; }
+    .subline a { text-decoration: underline; text-underline-offset: 2pt; }
+    .education p { margin-top: 3pt; }
+    .education-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+    .education-heading h3 { font-size: 10.5pt; }
+    .education-heading strong { flex-shrink: 0; font-size: 9.5pt; }
+    .skills p + p { margin-top: 3pt; }
+    article { margin-top: 8pt; break-inside: avoid; }
+    article:first-of-type { margin-top: 0; }
+    .project-links { margin-top: 3pt; font-size: 9pt; color: #394448; }
+    .project-links a { text-decoration: underline; text-underline-offset: 2pt; }
+    ul { margin: 5pt 0 0; padding-left: 13pt; }
+    li { padding-left: 2pt; margin-top: 3pt; }
+    .additional p + p { margin-top: 5pt; }
+    .additional a { text-decoration: underline; text-underline-offset: 2pt; }
+    strong { font-weight: 700; }
+    @media screen { body { padding: 28px 20px; } main { box-shadow: 0 0 0 1px #dde0e0; padding: 15mm 17mm; max-width: 210mm; } }
+    @media print { a { text-decoration: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Milind Bansal</h1>
+    <p class="contact"><a href="mailto:milindsk8r@gmail.com">Email</a> ·
+      <a href="https://github.com/MilindDevX">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/milind-bansal-177606244/">LinkedIn</a> ·
+      <a href="https://portfolio-milind.vercel.app/ai">Portfolio</a>
+    </p>
+  </header>
+
+  <section aria-labelledby="summary">
+    <h2 id="summary">Summary</h2>
+    <p>Computer Science and AI student building model-training pipelines, held-out evaluations, and full-stack AI workflows. Seeking an AI engineering internship to contribute Python/ML skills and end-to-end product engineering.</p>
+  </section>
+
+  <section class="education" aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <div class="education-heading"><h3>Newton School of Technology at Rishihood University</h3><strong>2024-2028</strong></div>
+    <div class="education-heading"><p>B.Tech in Computer Science and Artificial Intelligence</p><strong>CGPA: 9.28/10</strong></div>
+    <p>Minor in Finance</p>
+  </section>
+
+  <section class="skills" aria-labelledby="skills">
+    <h2 id="skills">Technical Skills</h2>
+    <p><strong>Languages:</strong> Python, TypeScript, JavaScript, SQL</p>
+    <p><strong>ML &amp; Data:</strong> scikit-learn, pandas, NumPy, TF-IDF, logistic regression, SHAP, model evaluation, data preprocessing, exploratory data analysis, Tableau</p>
+    <p><strong>AI &amp; Backend:</strong> OpenAI SDK, FastAPI, Pydantic, Zod, PostgreSQL, Prisma, Redis, BullMQ</p>
+    <p><strong>Web &amp; Tools:</strong> React, Next.js, Express, REST APIs, Git/GitHub</p>
+  </section>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <article>
+      <h3>TruthLens — NLP Classification &amp; Model Evaluation</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/TruthLens">GitHub</a> · <a href="https://frontend-ten-theta-81.vercel.app/">Live</a></p>
+      <ul>
+        <li>Built a misinformation-classification experiment using TF-IDF and logistic regression; corrected ISOT label provenance before retraining.</li>
+        <li>Evaluated on held-out LIAR data: F1 <strong>0.5648</strong> against a <strong>0.75</strong> release gate. Rejected the artifact rather than uploading or activating an unsupported model.</li>
+        <li>Implemented SHAP token-contribution explanations, drift checks, and fail-closed serving when no valid baseline is available; kept explanations distinct from factual verification.</li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>FeedbackOS — LLM-Assisted Feedback Triage</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/feedbackos">GitHub</a> · <a href="https://feedbackos.vercel.app/">Live</a></p>
+      <ul>
+        <li>Built an end-to-end prototype that ingests feedback and classifies theme, sentiment, and product area for filtered review and aggregate trend views.</li>
+        <li>Separated ingestion from classification with BullMQ workers and bounded concurrency; validated structured model output with Zod and included a low-confidence review path.</li>
+        <li>Implemented capped CSV ingestion and organization-scoped cached summaries to keep input handling and dashboard data boundaries explicit.</li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>Beijing PM2.5 — Data Preparation &amp; Exploratory Analysis</h3>
+      <p class="subline">Six-person coursework · Project, data &amp; ETL lead · <a href="https://github.com/MilindDevX/SectionD_G12_BeijingPM25Analysis">GitHub</a> · <a href="https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview">Live</a></p>
+      <ul>
+        <li>Led data sourcing for a six-person coursework project covering <strong>43,824 hourly observations</strong> from Beijing, 2010–2014.</li>
+        <li>Built the pandas ETL and cleaning workflow to prepare the hourly dataset for downstream analysis and visualization.</li>
+        <li>Supported exploratory analysis, seasonal and hourly views, Tableau work, and reporting while teammates led analysis and visualization.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="additional" aria-labelledby="additional">
+    <h2 id="additional">Open Source</h2>
+    <p><strong><a href="https://github.com/Pinfinity07/BlogApp/pull/2">Hacktoberfest contribution:</a></strong> Merged login/signup layout update across two React components in BlogApp (PR #2).</p>
+  </section>
+</main>
+</body>
+</html>

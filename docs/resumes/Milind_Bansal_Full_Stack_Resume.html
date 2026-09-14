@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- ABOUTME: Evidence-led full-stack internship resume matching the approved AI resume format. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Milind Bansal - Full-Stack Engineering Internship Resume</title>
+  <style>
+    @page { size: A4; margin: 14mm 16mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202629; background: #fff; font: 10pt/1.25 Helvetica, sans-serif; }
+    main { max-width: 176mm; margin: auto; }
+    h1, h2, h3, p { margin: 0; }
+    h1 { font: bold 25pt/1.08 Georgia, serif; letter-spacing: -0.5pt; }
+    .contact { margin-top: 7pt; font-size: 9.3pt; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid #202629; outline-offset: 2px; }
+    h2 { margin: 10pt 0 5pt; padding-bottom: 3pt; border-bottom: 0.7pt solid #687174; font-size: 9.5pt; font-weight: 700; letter-spacing: 1pt; text-transform: uppercase; }
+    h3 { font-size: 11pt; font-weight: 750; }
+    .subline { margin-top: 2pt; font-size: 9.5pt; color: #394448; }
+    .subline a { text-decoration: underline; text-underline-offset: 2pt; }
+    .education p { margin-top: 3pt; }
+    .education-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+    .education-heading h3 { font-size: 10.5pt; }
+    .education-heading strong { flex-shrink: 0; font-size: 9.5pt; }
+    .skills p + p { margin-top: 3pt; }
+    article { margin-top: 8pt; break-inside: avoid; }
+    article:first-of-type { margin-top: 0; }
+    ul { margin: 5pt 0 0; padding-left: 13pt; }
+    li { padding-left: 2pt; margin-top: 3pt; }
+    .additional p + p { margin-top: 5pt; }
+    .additional a { text-decoration: underline; text-underline-offset: 2pt; }
+    strong { font-weight: 700; }
+    @media screen { body { padding: 28px 20px; } main { box-shadow: 0 0 0 1px #dde0e0; padding: 15mm 17mm; max-width: 210mm; } }
+    @media print { a { text-decoration: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Milind Bansal</h1>
+    <p class="contact"><a href="mailto:milindsk8r@gmail.com">Email</a> ·
+      <a href="https://github.com/MilindDevX">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/milind-bansal-177606244/">LinkedIn</a> ·
+      <a href="https://portfolio-milind.vercel.app/">Portfolio</a>
+    </p>
+  </header>
+  <section aria-labelledby="summary">
+    <h2 id="summary">Summary</h2>
+    <p>Computer Science and AI student building web applications from interface to API, database, and background workers. Seeking a full-stack engineering internship to contribute TypeScript, React, and backend skills, with particular attention to validation, data boundaries, and failure states.</p>
+  </section>
+  <section class="education" aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <div class="education-heading"><h3>Newton School of Technology at Rishihood University</h3><strong>2024-2028</strong></div>
+    <div class="education-heading"><p>B.Tech in Computer Science and Artificial Intelligence</p><strong>CGPA: 9.28/10</strong></div>
+    <p>Minor in Finance</p>
+  </section>
+  <section class="skills" aria-labelledby="skills">
+    <h2 id="skills">Technical Skills</h2>
+    <p><strong>Languages:</strong> TypeScript, JavaScript, Python, SQL</p>
+    <p><strong>Frontend:</strong> React, Next.js, Tailwind CSS, HTML, CSS</p>
+    <p><strong>Backend &amp; Data:</strong> Node.js, Express, REST APIs, PostgreSQL, Prisma, Redis, BullMQ</p>
+    <p><strong>Web &amp; Tools:</strong> NextAuth, JWT, Zod, OpenAI SDK, Git/GitHub</p>
+  </section>
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <article>
+      <h3>FeedbackOS - Feedback Triage &amp; Background Processing</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/feedbackos">GitHub</a> · <a href="https://feedbackos.vercel.app/">Live</a></p>
+      <ul>
+        <li>Built a Next.js/TypeScript prototype for feedback ingestion, filtered review, and aggregate trends, backed by Prisma and PostgreSQL.</li>
+        <li>Separated classification from ingestion with Redis/BullMQ workers and bounded concurrency; validated OpenAI output with Zod and kept low-confidence results reviewable.</li>
+        <li>Implemented organization-scoped cached summaries, capped CSV ingestion, and AES-256-GCM integration-credential storage; included authentication with NextAuth.</li>
+      </ul>
+    </article>
+    <article>
+      <h3>MedMarket - Role-Aware Medicine Marketplace</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/MedMarket">GitHub</a> · <a href="https://med-market-self.vercel.app/">Live</a></p>
+      <ul>
+        <li>Built consumer, pharmacy-owner, and admin workflows with React and an Express/TypeScript REST API, using Prisma and PostgreSQL for persistence.</li>
+        <li>Implemented JWT authentication, role-aware routes, and controller-level OTC/MRP rules; kept catalogue and pricing decisions outside AI extraction.</li>
+        <li>Added tiered expiry notifications and document-extraction workflows with explicit unreadable/fallback states and human verification rather than treating AI output as authoritative.</li>
+      </ul>
+    </article>
+    <article>
+      <h3>RouteLens - API Directory &amp; Structural JSON Comparison</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/routelens">GitHub</a> · <a href="https://routelens-xi.vercel.app/">Live</a></p>
+      <ul>
+        <li>Built a browser-based Next.js/TypeScript tool that imports OpenAPI/Swagger JSON or YAML and hand-entered routes into a searchable API directory.</li>
+        <li>Implemented guarded browser persistence, route deduplication by project/method/path, and defensive internal-reference resolution that reports external or circular references.</li>
+        <li>Built structural JSON comparison with identity-key matching for suitable arrays and positional fallback otherwise; completed the project for a Digital Heroes internship qualifying round, not employment.</li>
+      </ul>
+    </article>
+  </section>
+  <section class="additional" aria-labelledby="additional">
+    <h2 id="additional">Open Source</h2>
+    <p><strong><a href="https://github.com/Pinfinity07/BlogApp/pull/2">Hacktoberfest contribution:</a></strong> Merged login/signup layout update across two React components in BlogApp (PR #2).</p>
+  </section>
+</main>
+</body>
+</html>
