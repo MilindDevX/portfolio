@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# private working notes and local design previews
+/.brain/
+/brain/
+/.superpowers/
+/docs/evidence/
+/docs/superpowers/plans/2026-09-07-swiss-portfolio.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
