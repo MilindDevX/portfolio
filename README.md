@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Milind Bansal — portfolio
 
-## Getting Started
+Evidence-led full-stack and applied-AI engineering portfolio built with Next.js 16 and React 19.
 
-First, run the development server:
+Source: https://github.com/MilindDevX/portfolio. Live full-stack edition: https://portfolio-milind.vercel.app/; applied-AI edition: https://portfolio-milind.vercel.app/ai. The previous portfolio is preserved in a separate private archived repository; its history is not part of this project.
+
+## Routes
+
+- `/` — full-stack portfolio
+- `/ai` — standalone applied-AI portfolio
+- `/full-stack` — temporary 307 redirect to `/`
+- `/work/truthlens` — TruthLens experiment-log case study
+- `/work/routelens`
+- `/work/feedbackos`
+- `/work/medmarket`
+
+Plain edition links move directly between the full-stack and AI portfolios; there is no segmented role switch. FeedbackOS and MedMarket remain canonical shared case studies, with no duplicate `/ai/work/*` routes. There are intentionally no public profile or résumé-context data endpoints. Approved public facts live in `data/portfolio.ts`; evidence and claim limits live in `docs/portfolio-evidence.md`.
+
+The AI hero's View résumé link opens `/docs/Milind_Bansal_AI_Internship_Resume.pdf` in a new tab. This public asset must match the approved master in `docs/resumes/`; the full-stack edition retains its separate résumé.
+
+TruthLens's ten evidence logs use content-sized chapters, consistent heading/body scale, authentic interface captures, and a same-scale release comparison. Its LIAR result is described as held-out evaluation, not evidence that the entire dataset was unseen. Local audit decisions and verification scope: `docs/ai-case-study-audit-review.md`.
+
+## Local verification
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run lint
+npm run typecheck
+npm run build
+npm run start -- --hostname 127.0.0.1 --port 3017
+PORTFOLIO_BASE_URL=http://127.0.0.1:3017 npm run test:portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The interface uses local licensed fonts, the unchanged student-developer avatar, the RouteLens directory home, FeedbackOS public home entry, MedMarket seeded demo dashboard, and TruthLens landing plus seeded dashboard captures.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The AI portfolio uses the Signal Cinema system: near-black canvas, warm text, restrained vermilion/cobalt signals, and compact editorial type. Its three-scene TruthLens preview covers the question, authentic interface, and release decision without pinning or scaling screenshots. CSS view timelines change scene exposure and draw the real evaluation comparison. One client coordinator updates the current chapter, pauses off-screen/hidden-document passive layers, and supplies an IntersectionObserver fallback when scroll timelines are unavailable. Three toolkit groups replace the long capability list; detailed evidence stays in case studies. `prefers-reduced-motion` leaves complete static content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content policy
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project copy is limited to repository evidence and facts directly confirmed by Milind. Unexecuted project test suites are never represented as passing, seeded figures are not presented as traction, and the retained PM2.5 screenshot with disputed embedded wording is not rendered publicly.
