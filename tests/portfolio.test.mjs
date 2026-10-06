@@ -484,7 +484,7 @@ test("optimized local identity and approved fonts ship as WebP/WOFF2", async () 
   for (const asset of [
     "/images/avatar/student-developer-portrait-v2.webp",
     "/images/projects/routelens-directory-home.webp",
-    "/images/projects/feedbackos-public-home.webp",
+    "/images/projects/feedbackos-review-queue.webp",
     "/images/projects/medmarket-admin-dashboard.webp",
     "/fonts/bricolage-grotesque-variable.woff2",
     "/fonts/atkinson-hyperlegible-next-variable.woff2",
@@ -495,11 +495,11 @@ test("optimized local identity and approved fonts ship as WebP/WOFF2", async () 
 test("project specimens use authentic home or demo dashboard captures", async () => {
   const [landing, routeLens, feedback, market] = await Promise.all([page("/"), page("/work/routelens"), page("/work/feedbackos"), page("/work/medmarket")]);
   for (const result of [landing, routeLens]) assert.ok(result.html.includes("routelens-directory-home.webp"), "RouteLens needs its public directory home");
-  for (const result of [landing, feedback]) assert.ok(result.html.includes("feedbackos-public-home.webp"), "FeedbackOS needs its public home entry");
+  for (const result of [landing, feedback]) assert.ok(result.html.includes("feedbackos-review-queue.webp"), "FeedbackOS needs its seeded review-queue capture");
   for (const result of [landing, market]) assert.ok(result.html.includes("medmarket-admin-dashboard.webp"), "MedMarket needs its public demo dashboard");
-  assert.ok(landing.html.includes("Public home entry; authenticated workspace is not shown."));
+  assert.ok(landing.html.includes("48 seed items. Needs Review marks low-confidence classifications; not usage or traction."));
   assert.ok(landing.html.includes("Public demo admin dashboard with seeded data; not usage or traction."));
-  assert.ok(feedback.html.includes("The authentic capture stops at the public home entry."));
+  assert.ok(feedback.html.includes("so it shows seed data, not usage."));
   assert.ok(!feedback.html.includes("The authentic capture stops at the public sign-in."));
   assert.ok(!landing.html.includes('class="assembly-lines"'), "Avatar must not include unexplained line decoration");
   assert.ok(!landing.html.includes("something Marvel"), "Off-screen copy must omit the unwanted Marvel phrase");

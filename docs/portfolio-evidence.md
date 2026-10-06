@@ -34,9 +34,11 @@ Verified 2026-09-11. This is the source of truth for portfolio copy. Repository 
 
 **Ownership provenance.** Milind directly confirmed that he designed and built this solo, end to end. Repository inspection alone does not establish contribution scope.
 
-**Evidence and limits.** Unit, integration, and Playwright files exist but were not executed. The public demo exposes only sign-in. The classifier fallback can return a hard-coded mock result on upstream `429`. Do not claim passing tests, real-time guarantees, model accuracy, customers, adoption, or uninterrupted AI classification.
+**Evidence and limits.** Unit, integration, and Playwright files exist but were not executed. The public demo exposes only sign-in; the portfolio capture comes from a local build. The classifier fallback can return a hard-coded mock result on upstream `429`. Do not claim passing tests, real-time guarantees, model accuracy, customers, adoption, or uninterrupted AI classification.
 
-**Authentic media.** `public/images/projects/feedbackos-public-home.webp`, 960 × 640, optimized from the responsive public-home capture retained as `docs/evidence/feedbackos-public-home-original.png` on 2026-09-10. It shows the real public entry only; no authenticated workspace or private data is shown. Caption: “Public home entry; authenticated workspace is not shown.” SHA-256: `4a7574c41706bb5d3b77207dd5ac5260fbe0c403a30e4bc73ccd6f7dbda55088`.
+**Authentic media (current, 2026-10-06).** `public/images/projects/feedbackos-review-queue.webp`, 1440 × 900, from a local `next dev --webpack` build on an isolated database seeded by `prisma/seed.ts`, signed in as the seeded `demo@feedbackos.app` via the console-printed magic link; all secrets overridden with throwaway values; Next dev badge hidden. Original: `docs/evidence/feedbackos-review-queue-original.png`. Shows 48 seed items and two Needs Review flags. Caption: “Local build signed in as the seeded demo user: 48 seed items. Needs Review marks low-confidence classifications; not usage or traction.” SHA-256: `860ca771610ef189cc2dab30ad66feb7a822c3455dce44f32bec3b77f2debc3e`. Not used: the dashboard view, because its 21-item total disagrees with the 48-item list and its first axis label is clipped.
+
+**Previous media (retired from pages).** `public/images/projects/feedbackos-public-home.webp`, 960 × 640, optimized from the responsive public-home capture retained as `docs/evidence/feedbackos-public-home-original.png` on 2026-09-10. It shows the real public entry only; no authenticated workspace or private data is shown. Caption: “Public home entry; authenticated workspace is not shown.” SHA-256: `4a7574c41706bb5d3b77207dd5ac5260fbe0c403a30e4bc73ccd6f7dbda55088`.
 
 ## MedMarket
 

@@ -31,7 +31,7 @@ npm run start -- --hostname 127.0.0.1 --port 3017
 PORTFOLIO_BASE_URL=http://127.0.0.1:3017 npm run test:portfolio
 ```
 
-The interface uses local licensed fonts, the unchanged student-developer avatar, the RouteLens directory home, FeedbackOS public home entry, MedMarket seeded demo dashboard, and TruthLens landing plus seeded dashboard captures.
+The interface uses local licensed fonts, the unchanged student-developer avatar, the RouteLens directory home, FeedbackOS seeded review queue (local build), MedMarket seeded demo dashboard, and TruthLens landing plus seeded dashboard captures.
 
 Since 2026-10-06 the AI edition opens with a Model work section (Amazon ML Challenge 2026, C-MAPSS) whose before/after metrics share one scale per study; TruthLens follows as chapter 03 of 07. The full-stack home replaces the BlogApp section with Team + competition work. Every route has its own title, canonical URL and share image (`app/**/opengraph-image.png`), plus `sitemap.xml` and `robots.txt`. `next.config.ts` sends CSP, nosniff, referrer, permissions and frame-deny headers; Next's inline bootstrap requires `'unsafe-inline'` without per-request nonces.
 

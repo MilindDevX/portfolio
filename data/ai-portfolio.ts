@@ -74,7 +74,7 @@ export const aiStudies = [
     summary: "Feedback → queued classification → human review. Built with BullMQ, OpenAI, and Zod, with organization-scoped summaries.",
     boundary: "Low-confidence output stays reviewable. Known gap: under OpenAI 429 rate limits, a hard-coded mock fallback can still be returned.",
     href: "/work/feedbackos",
-    image: "/images/projects/feedbackos-public-home.webp",
+    image: "/images/projects/feedbackos-review-queue.webp",
   },
   {
     slug: "medmarket",

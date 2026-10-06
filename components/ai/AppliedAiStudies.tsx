@@ -29,8 +29,8 @@ export function AppliedAiStudies() {
           <span>Queue</span><i aria-hidden="true" /><span>Validate</span><i aria-hidden="true" /><span>Review</span>
         </div>
         <figure className={styles.feedbackMedia}>
-          <Image src={feedback.image} width={960} height={640} sizes="(max-width: 1100px) calc(100vw - 40px), 52vw" alt="FeedbackOS public home entry" />
-          <figcaption>Public home entry; the authenticated workflow is not shown.</figcaption>
+          <Image src={feedback.image} width={1440} height={900} sizes="(max-width: 1100px) calc(100vw - 40px), 52vw" alt="FeedbackOS feedback list with AI labels and Needs Review flags" />
+          <figcaption>Local build, seeded demo data. Needs Review flags low-confidence output.</figcaption>
         </figure>
       </article>
 
