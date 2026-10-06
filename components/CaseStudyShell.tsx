@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { projects } from "@/data/portfolio";
 import { ArrowMark } from "./Marks";
 import { CaseEvidence } from "./CaseEvidence";
 
 type Project = (typeof projects)[number];
+
+export function caseStudyMetadata(project: Project): Metadata {
+  const title = `${project.name} — ${project.strapline.replace(/\.$/, "")} | Milind Bansal`;
+  return { title, description: project.summary, alternates: { canonical: `/work/${project.slug}` }, openGraph: { type: "article", locale: "en_US", siteName: "Milind Bansal", title, description: project.summary, images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Milind Bansal, full-stack engineer: Milind builds the whole path." }] } };
+}
 
 export function CaseStudyShell({ project, next }: { project: Project; next: Project }) {
   return <main className={`case-study case-${project.slug}`} id="main-content">

@@ -8,6 +8,8 @@ const bodyFont = localFont({ src: "../public/fonts/atkinson-hyperlegible-next-va
 const displayFont = localFont({ src: "../public/fonts/bricolage-grotesque-variable.woff2", variable: "--font-display", weight: "200 800", display: "swap", adjustFontFallback: false });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-milind.vercel.app"),
+  alternates: { canonical: "/" },
   title: "Milind Bansal — Full-stack engineer",
   description: "Evidence-led case studies across developer tools, AI feedback workflows, and multi-role marketplace systems by Milind Bansal.",
   openGraph: { type: "website", locale: "en_US", siteName: "Milind Bansal", title: "Milind Bansal — Full-stack engineer", description: "Developer tools, feedback workflows, and marketplace systems—built and explained." },

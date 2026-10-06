@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { AiPortfolio } from "@/components/ai/AiPortfolio";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/ai" },
   title: "Milind Bansal — Applied AI engineer",
   description: "Milind Bansal trains and evaluates models, then integrates their uncertain outputs into dependable products with explicit safeguards.",
   openGraph: {

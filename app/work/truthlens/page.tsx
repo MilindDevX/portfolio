@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { TruthLensCaseStudy } from "@/components/ai/TruthLensCaseStudy";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work/truthlens" },
   title: "TruthLens — release-gated misinformation experiment | Milind Bansal",
   description: "TruthLens documents a misinformation-classification experiment, its rejected out-of-distribution result, and the safeguards that keep invalid inference offline.",
   openGraph: {
