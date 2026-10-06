@@ -1,5 +1,14 @@
 # AI internship resume
 
+## 2026-10-06 revision (approved by Milind; local only, not deployed)
+
+For year-long internship applications (start ~March 2027). Both résumés now print contacts as visible text (email, GitHub, LinkedIn, portfolio URLs) so ATS parsers and printed copies keep them. The BlogApp layout PR was removed as too minor.
+
+- AI résumé: Amazon ML Challenge 2026 and C-MAPSS lead; FeedbackOS and TruthLens trimmed to two bullets; Beijing PM2.5 and Tableau moved off the page (still portfolio evidence). TruthLens is framed as an enforced release gate.
+- Full-stack résumé: hedging phrases tightened; Open Source replaced by Achievements & Collaboration (Amazon ML, C-MAPSS).
+- Evidence: Amazon figures come from `student_resource/Documentation_template.md` (held-out macro F0.5 0.8476→0.8925, pair recall 0.8433→0.9068, public 0.819→0.869733 on a test subset, 1,732,544 test S1 rows); 28 unit tests re-run and passed 2026-10-06. Team Noobs; "built the matching pipeline" rests on Milind's Codex build session was confirmed by Milind as equal team contribution ("Co-built"). C-MAPSS: public repo vks-g/cmapss-rul-hybrid, Milind's merged PRs #28 #29 #30 #37 (verified via gh), FD001 holdout RMSE 30.759→26.472 and CV caveat from `docs/ml-models-notebook.md`; four contributors in git history.
+- Verification: `node --test tests/ai-resume.test.mjs`, both PDFKit swift checks (one page, selectable text, links), and 51/51 `test:portfolio` byte-identity regressions against a local production build passed. Both PDFs visually inspected.
+
 ## Full-stack counterpart
 
 Updated 2026-09-14 at Milind's request using the AI résumé's single-column A4 format, typography, contact labels, aligned education/CGPA, and section hierarchy. Editable source: `Milind_Bansal_Full_Stack_Resume.html`; master PDF: `Milind_Bansal_Full_Stack_Resume.pdf`; identical public asset: `/docs/Milind_Bansal_Full_Stack_Resume.pdf`. Portfolio opens `/`, not `/ai`.

@@ -41,16 +41,16 @@
 <main>
   <header>
     <h1>Milind Bansal</h1>
-    <p class="contact"><a href="mailto:milindsk8r@gmail.com">Email</a> ·
-      <a href="https://github.com/MilindDevX">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/milind-bansal-177606244/">LinkedIn</a> ·
-      <a href="https://portfolio-milind.vercel.app/ai">Portfolio</a>
+    <p class="contact"><a href="mailto:milindsk8r@gmail.com">milindsk8r@gmail.com</a> ·
+      <a href="https://github.com/MilindDevX">github.com/MilindDevX</a> ·
+      <a href="https://www.linkedin.com/in/milind-bansal-177606244/">linkedin.com/in/milind-bansal-177606244</a> ·
+      <a href="https://portfolio-milind.vercel.app/ai">portfolio-milind.vercel.app/ai</a>
     </p>
   </header>
 
   <section aria-labelledby="summary">
     <h2 id="summary">Summary</h2>
-    <p>Computer Science and AI student building model-training pipelines, held-out evaluations, and full-stack AI workflows. Seeking an AI engineering internship to contribute Python/ML skills and end-to-end product engineering.</p>
+    <p>Computer Science and AI student building ML pipelines and LLM-backed products end to end: candidate retrieval, gradient-boosted models, leakage-safe validation, and deployed TypeScript/Python applications. Seeking a year-long AI engineering internship.</p>
   </section>
 
   <section class="education" aria-labelledby="education">
@@ -63,20 +63,30 @@
   <section class="skills" aria-labelledby="skills">
     <h2 id="skills">Technical Skills</h2>
     <p><strong>Languages:</strong> Python, TypeScript, JavaScript, SQL</p>
-    <p><strong>ML &amp; Data:</strong> scikit-learn, pandas, NumPy, TF-IDF, logistic regression, SHAP, model evaluation, data preprocessing, exploratory data analysis, Tableau</p>
-    <p><strong>AI &amp; Backend:</strong> OpenAI SDK, FastAPI, Pydantic, Zod, PostgreSQL, Prisma, Redis, BullMQ</p>
-    <p><strong>Web &amp; Tools:</strong> React, Next.js, Express, REST APIs, Git/GitHub</p>
+    <p><strong>ML &amp; Data:</strong> scikit-learn, LightGBM, XGBoost, pandas, NumPy, TF-IDF, SHAP, cross-validation, entity resolution</p>
+    <p><strong>AI &amp; Backend:</strong> OpenAI SDK, structured outputs, FastAPI, Pydantic, Zod, PostgreSQL, Prisma, Redis, BullMQ</p>
+    <p><strong>Web &amp; Tools:</strong> React, Next.js, Express, REST APIs, Git/GitHub, unittest, pytest</p>
   </section>
 
   <section aria-labelledby="projects">
     <h2 id="projects">Projects</h2>
     <article>
-      <h3>TruthLens — NLP Classification &amp; Model Evaluation</h3>
-      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/TruthLens">GitHub</a> · <a href="https://frontend-ten-theta-81.vercel.app/">Live</a></p>
+      <h3>Amazon ML Challenge 2026 — Business Entity Resolution</h3>
+      <p class="subline">Team competition entry (Team Noobs) · Co-built the matching pipeline</p>
       <ul>
-        <li>Built a misinformation-classification experiment using TF-IDF and logistic regression; corrected ISOT label provenance before retraining.</li>
-        <li>Evaluated on held-out LIAR data: F1 <strong>0.5648</strong> against a <strong>0.75</strong> release gate. Rejected the artifact rather than uploading or activating an unsupported model.</li>
-        <li>Implemented SHAP token-contribution explanations, drift checks, and fail-closed serving when no valid baseline is available; kept explanations distinct from factual verification.</li>
+        <li>Matched <strong>1.73M</strong> test businesses across three sources with multi-route inverted-index blocking (character TF-IDF n-grams, rare tokens, postal and house-number keys) feeding a LightGBM pair classifier.</li>
+        <li>Raised held-out blocking recall from <strong>0.843 to 0.907</strong> and held-out macro F0.5 from <strong>0.848 to 0.893</strong> through wider candidate caps and threshold tuning on unseen entities.</li>
+        <li>Diagnosed over-prediction in a test country absent from training (8.6 vs 3.5 links per record) and added a data-only filter, lifting public-leaderboard F0.5 from <strong>0.819 to 0.870</strong>; covered by 28 unit tests.</li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>C-MAPSS — Turbofan Remaining-Useful-Life Prediction</h3>
+      <p class="subline">Four-person team · 4 merged pull requests · <a href="https://github.com/vks-g/cmapss-rul-hybrid">GitHub</a></p>
+      <ul>
+        <li>Implemented seeded engine-level splits and fold-fitted operating-regime normalization so no test-engine statistics leak into training; added regression tests for invalid and unfitted use.</li>
+        <li>Built matched cross-validated comparisons of raw-sensor and engineered-feature Random Forest, XGBoost and Elastic Net models; engineered Random Forest cut FD001 holdout RMSE from <strong>30.8 to 26.5</strong> cycles.</li>
+        <li>Reported that mean CV RMSE did not confirm a general feature advantage, and added tree SHAP analysis of the sensors driving predictions.</li>
       </ul>
     </article>
 
@@ -84,26 +94,19 @@
       <h3>FeedbackOS — LLM-Assisted Feedback Triage</h3>
       <p class="subline">Solo project · <a href="https://github.com/MilindDevX/feedbackos">GitHub</a> · <a href="https://feedbackos.vercel.app/">Live</a></p>
       <ul>
-        <li>Built an end-to-end prototype that ingests feedback and classifies theme, sentiment, and product area for filtered review and aggregate trend views.</li>
-        <li>Separated ingestion from classification with BullMQ workers and bounded concurrency; validated structured model output with Zod and included a low-confidence review path.</li>
-        <li>Implemented capped CSV ingestion and organization-scoped cached summaries to keep input handling and dashboard data boundaries explicit.</li>
+        <li>Built a deployed Next.js/TypeScript product that classifies feedback theme, sentiment, and product area with OpenAI structured output validated by Zod, routing low-confidence results to human review.</li>
+        <li>Decoupled ingestion from classification with Redis/BullMQ workers and bounded concurrency; added capped CSV ingestion and organization-scoped cached summaries.</li>
       </ul>
     </article>
 
     <article>
-      <h3>Beijing PM2.5 — Data Preparation &amp; Exploratory Analysis</h3>
-      <p class="subline">Six-person coursework · Project, data &amp; ETL lead · <a href="https://github.com/MilindDevX/SectionD_G12_BeijingPM25Analysis">GitHub</a> · <a href="https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview">Live</a></p>
+      <h3>TruthLens — NLP Classification &amp; Model Evaluation</h3>
+      <p class="subline">Solo project · <a href="https://github.com/MilindDevX/TruthLens">GitHub</a> · <a href="https://frontend-ten-theta-81.vercel.app/">Live</a></p>
       <ul>
-        <li>Led data sourcing for a six-person coursework project covering <strong>43,824 hourly observations</strong> from Beijing, 2010–2014.</li>
-        <li>Built the pandas ETL and cleaning workflow to prepare the hourly dataset for downstream analysis and visualization.</li>
-        <li>Supported exploratory analysis, seasonal and hourly views, Tableau work, and reporting while teammates led analysis and visualization.</li>
+        <li>Built a TF-IDF and logistic-regression misinformation classifier with a FastAPI service, SHAP token explanations, drift checks, and fail-closed serving.</li>
+        <li>Enforced a <strong>0.75</strong> F1 release gate: held-out LIAR F1 of <strong>0.5648</strong> failed it, so the model was blocked from release instead of shipped.</li>
       </ul>
     </article>
-  </section>
-
-  <section class="additional" aria-labelledby="additional">
-    <h2 id="additional">Open Source</h2>
-    <p><strong><a href="https://github.com/Pinfinity07/BlogApp/pull/2">Hacktoberfest contribution:</a></strong> Merged login/signup layout update across two React components in BlogApp (PR #2).</p>
   </section>
 </main>
 </body>

@@ -7,10 +7,10 @@ let path = CommandLine.arguments.dropFirst().first ?? "public/docs/Milind_Bansal
 guard let document = PDFDocument(url: URL(fileURLWithPath: path)) else { fatalError("Cannot open resume") }
 precondition(document.pageCount == 1, "Resume must fit one page")
 let text = document.string ?? ""
-for fact in ["Milind Bansal", "Email", "Portfolio", "Projects", "FeedbackOS", "MedMarket", "RouteLens", "9.28/10", "Solo project", "Hacktoberfest", "OpenAI", "BullMQ", "JWT"] {
+for fact in ["Milind Bansal", "milindsk8r@gmail.com", "portfolio-milind.vercel.app", "Projects", "FeedbackOS", "MedMarket", "RouteLens", "9.28/10", "Solo project", "Amazon ML Challenge 2026", "C-MAPSS", "OpenAI", "BullMQ", "JWT"] {
     precondition(text.localizedCaseInsensitiveContains(fact), "Missing selectable fact: \(fact)")
 }
-for unsupported in ["1.2s", "58-test", "PostgreSQL constraint", "3rd-year", "nst.rishihood.edu.in", "Selected Projects"] {
+for unsupported in ["1.2s", "58-test", "PostgreSQL constraint", "3rd-year", "nst.rishihood.edu.in", "Selected Projects", "Hacktoberfest", "not employment"] {
     precondition(!text.contains(unsupported), "Unsupported or obsolete text: \(unsupported)")
 }
 let page = document.page(at: 0)!
@@ -21,7 +21,7 @@ let course = document.findString("B.Tech in Computer Science and Artificial Inte
 precondition(abs(college.bounds(for: page).maxY-period.bounds(for: page).maxY) < 3, "College/timeline misaligned")
 precondition(abs(course.bounds(for: page).maxY-cgpa.bounds(for: page).maxY) < 3, "Course/CGPA misaligned")
 let links = page.annotations.filter { $0.url != nil }
-for (destination, label) in [("https://portfolio-milind.vercel.app/", "Portfolio"), ("mailto:milindsk8r@gmail.com", "Email"), ("https://github.com/MilindDevX", "GitHub"), ("https://www.linkedin.com/in/milind-bansal-177606244/", "LinkedIn")] {
+for (destination, label) in [("https://portfolio-milind.vercel.app/", "portfolio-milind.vercel.app"), ("mailto:milindsk8r@gmail.com", "milindsk8r@gmail.com"), ("https://github.com/MilindDevX", "github.com/MilindDevX"), ("https://www.linkedin.com/in/milind-bansal-177606244/", "linkedin.com/in/milind-bansal")] {
     let link=links.first { $0.url?.absoluteString == destination }
     precondition(link != nil, "Missing link: \(destination)")
     precondition(page.selection(for: link!.bounds)?.string?.contains(label) == true, "Incorrect link label: \(label)")

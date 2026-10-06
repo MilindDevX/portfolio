@@ -6,7 +6,7 @@ let path = CommandLine.arguments.dropFirst().first ?? "docs/resumes/Milind_Bansa
 guard let document = PDFDocument(url: URL(fileURLWithPath: path)) else { fatalError("Cannot open resume PDF") }
 precondition(document.pageCount == 1, "Expected one page; got \(document.pageCount)")
 let text = document.string ?? ""
-for fact in ["Milind Bansal", "Portfolio", "Email", "Projects", "Python", "TruthLens", "FeedbackOS", "Beijing PM2.5", "43,824", "0.5648", "0.75", "9.28/10", "Hacktoberfest"] {
+for fact in ["Milind Bansal", "milindsk8r@gmail.com", "github.com/MilindDevX", "portfolio-milind.vercel.app/ai", "Projects", "Python", "Amazon ML Challenge 2026", "C-MAPSS", "TruthLens", "FeedbackOS", "0.893", "0.5648", "0.75", "9.28/10"] {
     precondition(text.localizedCaseInsensitiveContains(fact), "PDF text missing or fragmented: \(fact)")
 }
 precondition(!text.contains("nst.rishihood.edu.in"), "Private college address leaked")
@@ -23,10 +23,10 @@ precondition(abs(course.bounds(for: page).maxY-cgpa.bounds(for: page).maxY) < 3,
 let links = document.page(at: 0)!.annotations.filter { $0.url != nil }
 precondition(links.count >= 8, "Expected clickable contact and project links")
 let destinations = links.compactMap { $0.url?.absoluteString }
-for destination in ["https://portfolio-milind.vercel.app/ai", "mailto:milindsk8r@gmail.com", "https://feedbackos.vercel.app/", "https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview"] {
+for destination in ["https://portfolio-milind.vercel.app/ai", "mailto:milindsk8r@gmail.com", "https://feedbackos.vercel.app/", "https://github.com/vks-g/cmapss-rul-hybrid"] {
     precondition(destinations.contains(destination), "Missing hosted link: \(destination)")
 }
-for (destination, label) in [("https://portfolio-milind.vercel.app/ai", "Portfolio"), ("mailto:milindsk8r@gmail.com", "Email")] {
+for (destination, label) in [("https://portfolio-milind.vercel.app/ai", "portfolio-milind.vercel.app/ai"), ("mailto:milindsk8r@gmail.com", "milindsk8r@gmail.com")] {
     let annotation = links.first { $0.url?.absoluteString == destination }!
     precondition(page.selection(for: annotation.bounds)?.string?.contains(label) == true, "Wrong clickable label: \(label)")
 }
