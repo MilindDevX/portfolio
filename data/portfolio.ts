@@ -27,7 +27,7 @@ export const profile = {
   name: publicProfile.name,
   role: "Full-stack engineer",
   location: publicProfile.location,
-  availability: "Available now for internships, freelance work, and open-source collaboration.",
+  availability: "Looking for a year-long internship from early 2027. Freelance work welcome.",
   degree: education.degree,
   institution: education.institution,
   period: education.period,
@@ -128,9 +128,16 @@ export const labNote = {
   tableau: "https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview",
 } as const;
 
-export const contribution = {
-  name: "BlogApp authentication screens",
-  label: "One accepted Hacktoberfest UI contribution",
-  summary: "A merged login and signup layout update across two React components: +120 / −69 lines in pull request #2.",
-  url: "https://github.com/Pinfinity07/BlogApp/pull/2",
-} as const;
+export const teamWork = [
+  {
+    name: "Amazon ML Challenge 2026",
+    label: "Team competition · Co-built",
+    summary: "A LightGBM entity-resolution pipeline over 1.73M businesses. Public-leaderboard F0.5 0.870, covered by 28 unit tests.",
+  },
+  {
+    name: "C-MAPSS",
+    label: "Four-person ML repository · 4 merged PRs",
+    summary: "Engine-level data splits, regime normalization, EDA, and model comparison for turbofan remaining-life prediction.",
+    url: "https://github.com/vks-g/cmapss-rul-hybrid",
+  },
+] as const;

@@ -7,7 +7,7 @@ export function AiCurrentChapter() {
   return (
     <section id="ai-about" className={styles.currentChapter} aria-labelledby="ai-about-title" data-ai-chapter="ABOUT">
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionIndex}>06 / 06</p>
+        <p className={styles.sectionIndex}>07 / 07</p>
         <div><p className={styles.sectionKicker}>Current chapter</p><h2 id="ai-about-title">Learning the whole system</h2></div>
       </div>
       <div className={styles.chapterBody}>

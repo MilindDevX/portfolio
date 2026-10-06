@@ -11,7 +11,7 @@ export function AiCapabilityMap() {
       data-ai-chapter="CAPABILITIES"
     >
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionIndex}>04 / 06</p>
+        <p className={styles.sectionIndex}>05 / 07</p>
         <div><p className={styles.sectionKicker}>Working toolkit</p><h2 id="capabilities-title">What I work with</h2></div>
       </div>
       <ol className={styles.capabilityTrack}>

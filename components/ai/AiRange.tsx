@@ -1,4 +1,4 @@
-// ABOUTME: Compact supporting evidence that distinguishes engineering, coursework, and open-source work.
+// ABOUTME: Compact supporting evidence that distinguishes engineering and coursework.
 import { aiRange } from "@/data/ai-portfolio";
 import styles from "./ai.module.css";
 
@@ -6,7 +6,7 @@ export function AiRange() {
   return (
     <section id="range" className={styles.range} aria-labelledby="range-title" data-ai-chapter="RANGE">
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionIndex}>05 / 06</p>
+        <p className={styles.sectionIndex}>06 / 07</p>
         <div><p className={styles.sectionKicker}>Supporting evidence</p><h2 id="range-title">Beyond models</h2></div>
       </div>
       <ol className={styles.rangeReel}>

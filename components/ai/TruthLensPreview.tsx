@@ -7,7 +7,7 @@ export function TruthLensPreview() {
   return (
     <section id="ai-work" className={styles.truthLens} aria-labelledby="truthlens-title" data-ai-chapter="TRUTHLENS" data-ai-story="truthlens">
       <header className={`${styles.truthScene} ${styles.questionScene}`} data-ai-scene="question">
-        <p className={styles.flagshipLabel}>TRUTHLENS / SOLO EXPERIMENT</p>
+        <p className={styles.flagshipLabel}>03 / 07 · TRUTHLENS / SOLO EXPERIMENT</p>
         <h2 id="truthlens-title">Could AI detect <span className={styles.storyQuestionTail}>misinformation?</span></h2>
         <p>I started with that question, then built a TF-IDF / logistic-regression baseline, corrected the dataset labels, and tested it on held-out LIAR data.</p>
         <nav className={styles.sceneLinks} aria-label="TruthLens destinations">

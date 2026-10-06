@@ -84,9 +84,7 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 .threshold-bar { position:relative; height:60px; margin-top:46px; background:#dfdcd3 } .threshold-bar i { display:block; height:100%; background:var(--coral) }
 .threshold-bar span { position:absolute; left:23%; top:50%; transform:translateY(-50%); font:12px/1 monospace }
 .data-figure figcaption { margin-top:20px; color:var(--muted); font-size:.78rem }
-.contribution>div { max-width:850px } .contribution-status { width:max-content; margin-bottom:22px; padding:7px 10px; background:#dce6ff; color:#173d9b; font:10px/1.2 monospace }
-.contribution h2 { font-size:clamp(2.6rem,5vw,5rem) } .contribution div>p:not(.contribution-status) { max-width:60ch; margin-top:22px; color:var(--muted) }
-.contribution .action-link { margin-top:26px }
+.team-work>div { max-width:1000px }
 .technology h2 { font-size:clamp(2.7rem,4.7vw,5rem) } .technology-intro { margin-top:20px; color:var(--muted) }
 .technology dl { margin-top:42px; border-top:1px solid var(--ink) }
 .technology dl>div { display:grid; grid-template-columns:4fr 6fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--rule) }
@@ -196,17 +194,17 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
   .site-header { grid-template-columns:1fr auto auto; min-height:72px } .site-header .primary-nav { order:4; grid-column:1/-1; width:100%; justify-content:space-between; border-top:1px solid var(--rule) }
   .site-header .primary-nav a { min-height:48px } .wordmark strong { display:none }
   .hero { display:flex; flex-direction:column; min-height:auto; padding-top:34px; padding-bottom:48px; overflow:hidden }
-  .hero-status { order:1 } .hero-title-wrap { order:2; margin-top:56px } .hero h1 { font-size:clamp(3.45rem,17.7vw,5rem) }
+  .hero-status { order:1 } .hero-title-wrap { order:2; align-self:stretch; margin-top:56px } .hero h1 { font-size:clamp(3.45rem,17.7vw,5rem) }
   .hero-copy { order:3; margin-top:36px; max-width:none } .avatar-stage { order:4; position:relative; right:auto; bottom:auto; width:100%; margin-top:48px }
   .selected-work { padding-top:72px } .section-intro { padding-bottom:48px } .section-intro h2,.ruled-section h2 { font-size:clamp(2.5rem,12vw,4rem) }
   .project-specimen { padding-bottom:72px } .project-specimen>header { flex-direction:column; margin-bottom:30px }
   .project-copy { display:block } .project-copy h3 { font-size:clamp(3.4rem,18vw,5rem) }
   .system-map { min-height:0; padding:28px; flex-direction:column } .feedback-map span,.market-map span { width:100%; aspect-ratio:auto; min-height:70px } .feedback-map i { transform:rotate(90deg) }
   .ruled-section { padding-block:72px } .lab-grid { gap:36px } .data-figure { padding:24px } .data-number { font-size:20vw }
-  .contribution-status { white-space:normal; width:auto } .technology dl>div { grid-template-columns:1fr; gap:8px } .current-chapter dl { grid-template-columns:1fr }
+  .technology dl>div { grid-template-columns:1fr; gap:8px } .current-chapter dl { grid-template-columns:1fr }
   .site-footer { padding-top:64px } .footer-call { grid-template-columns:1fr } .footer-call h2 { font-size:15vw } .footer-links { grid-template-columns:1fr }
   .footer-links a,.footer-links a:first-child { border-left:1px solid var(--rule); border-bottom:1px solid var(--rule) } .footer-base { flex-direction:column }
-  .case-study { padding-top:0 } .case-hero { padding-top:24px; padding-bottom:72px } .case-hero>.section-label { margin-top:48px } .case-hero h1 { font-size:20vw }
+  .case-study { padding-top:0 } .case-hero { padding-top:24px; padding-bottom:72px } .case-hero>.section-label { margin-top:48px } .case-hero h1 { font-size:18vw }
   .case-evidence { padding-block:72px } .evidence-heading { grid-template-columns:1fr; margin-bottom:36px }
   .pipeline-diagram,.roles-diagram { grid-template-columns:1fr } .pipeline-diagram li { min-height:auto; border-right:0; padding:22px }
   .pipeline-diagram strong,.roles-diagram h3 { margin-top:32px } .case-pipeline aside,.roles-diagram>div { grid-template-columns:1fr }
@@ -214,3 +212,7 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 }
 @media (max-width:360px) { .hero h1 { font-size:16.5vw } .header-resume .arrow-mark { display:none } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto } *,*::before,*::after { animation-duration:.01ms!important; animation-delay:0s!important; animation-iteration-count:1!important; transition-duration:.01ms!important; transition-delay:0s!important } .reveal,.reveal * { opacity:1!important; transform:none!important } }
+.team-work h2 { font-size:clamp(2.6rem,5vw,5rem) } .team-work-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); margin:36px 0 0; padding:0; list-style:none }
+.team-work-list li { padding-top:22px; border-top:1px solid var(--rule) } .team-work-label { font:.7rem/1.4 monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+.team-work-list h3 { margin-top:12px; font:400 clamp(1.8rem,3vw,2.6rem)/1 var(--font-display),sans-serif; letter-spacing:-.04em } .team-work-list li>p:not(.team-work-label) { max-width:52ch; margin-top:14px; color:var(--muted) } .team-work-list .action-link { margin-top:20px }
+@media (max-width:767px) { .team-work-list { grid-template-columns:1fr } }

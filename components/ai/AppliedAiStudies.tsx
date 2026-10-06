@@ -13,7 +13,7 @@ export function AppliedAiStudies() {
       data-ai-chapter="APPLIED AI"
     >
       <div className={styles.sectionHeading}>
-        <p className={styles.sectionIndex}>03 / 06</p>
+        <p className={styles.sectionIndex}>04 / 07</p>
         <div><p className={styles.sectionKicker}>Applied studies</p><h2 id="applied-ai-title">AI inside complete products</h2></div>
       </div>
 

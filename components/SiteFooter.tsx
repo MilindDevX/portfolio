@@ -14,7 +14,7 @@ export function SiteFooter() {
 
   return <footer className="site-footer" id="contact">
     <div className="shell footer-shell">
-      <div className="footer-call"><p className="section-label">Open channel / Available now</p><div><h2>Have a useful problem?<br/><em>Send it over.</em></h2></div></div>
+      <div className="footer-call"><p className="section-label">Open channel / Internship 2027</p><div><h2>Have a useful problem?<br/><em>Send it over.</em></h2></div></div>
       <div className="footer-links" aria-label="Contact links">
         <a href={`mailto:${profile.email}`}><span>Email</span><strong>{profile.email}</strong><ArrowMark /></a>
         <a href={destinations.github}><span>Code</span><strong>GitHub</strong><ArrowMark /></a>

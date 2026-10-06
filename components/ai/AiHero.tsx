@@ -33,7 +33,7 @@ export function AiHero() {
         />
       </figure>
 
-      <a className={styles.scrollCue} href="#ai-work">SCROLL INTO THE EVIDENCE <span aria-hidden="true" /></a>
+      <a className={styles.scrollCue} href="#model-work">SCROLL INTO THE EVIDENCE <span aria-hidden="true" /></a>
     </section>
   );
 }

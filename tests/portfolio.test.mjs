@@ -23,7 +23,7 @@ const publishableText = async (directory) => {
 test("landing page publishes the approved full-stack profile", async () => {
   const { response, html } = await page("/");
   assert.equal(response.status, 200);
-  for (const fact of ["Milind Bansal", "Computer Science and Artificial Intelligence", "Newton School of Technology at Rishihood University", "9.28/10", "milindsk8r@gmail.com", "RouteLens", "FeedbackOS", "MedMarket", "Beijing PM2.5", "Hacktoberfest"]) {
+  for (const fact of ["Milind Bansal", "Computer Science and Artificial Intelligence", "Newton School of Technology at Rishihood University", "9.28/10", "milindsk8r@gmail.com", "RouteLens", "FeedbackOS", "MedMarket", "Beijing PM2.5", "Amazon ML Challenge 2026", "C-MAPSS"]) {
     assert.ok(html.includes(fact), `Missing approved fact: ${fact}`);
   }
   for (const singular of ["Newton School of Technology at Rishihood University", "CGPA: 9.28/10"]) {
@@ -168,7 +168,7 @@ test("shared case studies expose their AI boundaries", async () => {
 
 test("AI portfolio keeps supporting evidence compact and education singular", async () => {
   const { html } = await page("/ai");
-  for (const fact of ["RouteLens", "Beijing PM2.5", "Hacktoberfest", "Finance minor"])
+  for (const fact of ["RouteLens", "Beijing PM2.5", "Amazon ML Challenge 2026", "C-MAPSS", "0.893", "Finance minor"])
     assert.ok(html.includes(fact), `Missing supporting fact: ${fact}`);
   assert.equal(html.split("Newton School of Technology at Rishihood University").length - 1, 1);
   assert.match(html, /<dt>CGPA<\/dt><dd>9\.28\/10<\/dd>/);
@@ -303,7 +303,7 @@ test("applied AI projects use distinct scenes and retain canonical destinations"
 test("AI chapter numbers follow the work-first homepage order", async () => {
   const { html } = await page("/ai");
   const visible = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
-  assert.deepEqual([...visible.matchAll(/>(0[3-6]) \/ 06</g)].map(match => match[1]), ["03", "04", "05", "06"]);
+  assert.deepEqual([...visible.matchAll(/>(0[2-7]) \/ 07</g)].map(match => match[1]), ["02", "04", "05", "06", "07"]);
 });
 
 test("AI range, personal chapter, and contact form one cinematic ending", async () => {
@@ -443,7 +443,7 @@ test("private college address stays absent from raw published artifacts", async 
 
 test("approved destinations and current résumé are public", async () => {
   const { html } = await page("/");
-  for (const destination of ["mailto:milindsk8r@gmail.com", "https://github.com/MilindDevX", "https://www.linkedin.com/in/milind-bansal-177606244/", "https://github.com/MilindDevX/SectionD_G12_BeijingPM25Analysis", "https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview", "https://github.com/Pinfinity07/BlogApp/pull/2"]) assert.ok(html.includes(`href="${destination}"`), `Missing destination: ${destination}`);
+  for (const destination of ["mailto:milindsk8r@gmail.com", "https://github.com/MilindDevX", "https://www.linkedin.com/in/milind-bansal-177606244/", "https://github.com/MilindDevX/SectionD_G12_BeijingPM25Analysis", "https://public.tableau.com/app/profile/milind.bansal5979/viz/DVA2-Capstone/RiskSeverityOverview"]) assert.ok(html.includes(`href="${destination}"`), `Missing destination: ${destination}`);
   const pdf = await get("/docs/Milind_Bansal_Full_Stack_Resume.pdf");
   assert.equal(pdf.status, 200);
   assert.equal(Buffer.from(await pdf.arrayBuffer()).subarray(0, 5).toString(), "%PDF-");
@@ -557,4 +557,26 @@ test("coral text combinations meet WCAG AA", async () => {
   assert.ok(contrast(token("coral"), token("paper")) >= 4.5, "Coral labels on paper must meet AA");
   assert.ok(contrast(token("surface"), token("coral")) >= 4.5, "Surface text on coral must meet AA");
   assert.ok(!css.includes("#ffe0d6"), "Low-contrast pale text must not remain on coral surfaces");
+});
+
+test("minor BlogApp layout PR no longer appears as headline evidence", async () => {
+  for (const path of ["/", "/ai"]) assert.ok(!(await page(path)).html.includes("BlogApp"), `${path} still lists BlogApp`);
+});
+
+test("every public route carries its own title, canonical URL, and share image", async () => {
+  for (const [path, title] of [["/", "Full-stack engineer"], ["/ai", "Applied AI engineer"], ["/work/feedbackos", "FeedbackOS —"], ["/work/medmarket", "MedMarket —"], ["/work/routelens", "RouteLens —"], ["/work/truthlens", "TruthLens —"]]) {
+    const { html } = await page(path);
+    assert.match(html, new RegExp(`<title>[^<]*${title}`), `${path} title`);
+    assert.ok(html.includes(`<link rel="canonical" href="https://portfolio-milind.vercel.app${path === "/" ? "" : path}"`), `${path} canonical`);
+    assert.match(html, /<meta property="og:image" content="https:\/\/portfolio-milind\.vercel\.app\/[^"]*opengraph-image/, `${path} og:image`);
+  }
+  assert.equal((await get("/sitemap.xml")).status, 200);
+  assert.ok((await (await get("/robots.txt")).text()).includes("sitemap.xml"));
+});
+
+test("responses carry baseline security headers", async () => {
+  const response = await get("/");
+  assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.ok(response.headers.get("referrer-policy"));
 });

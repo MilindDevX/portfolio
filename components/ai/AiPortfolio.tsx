@@ -2,6 +2,7 @@
 import { AiHero } from "./AiHero";
 import { AiCapabilityMap } from "./AiCapabilityMap";
 import { AiCurrentChapter } from "./AiCurrentChapter";
+import { AiModelWork } from "./AiModelWork";
 import { AiMotion } from "./AiMotion";
 import { AiRange } from "./AiRange";
 import { AppliedAiStudies } from "./AppliedAiStudies";
@@ -13,6 +14,7 @@ export function AiPortfolio() {
     <main id="main-content" className={styles.portfolio} data-ai-portfolio>
       <AiMotion />
       <AiHero />
+      <AiModelWork />
       <TruthLensPreview />
       <AppliedAiStudies />
       <AiCapabilityMap />

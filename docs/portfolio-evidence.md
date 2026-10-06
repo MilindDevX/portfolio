@@ -60,7 +60,25 @@ Verified 2026-09-11. This is the source of truth for portfolio copy. Repository 
 
 **Authentic media.** `docs/evidence/beijing-pm25-temporal-patterns.webp` is retained as provenance only and excluded from deployment. Its visible WHO/hazardous wording conflicts with verified evidence; a caption cannot neutralize embedded claims.
 
-## BlogApp contribution
+## Amazon ML Challenge 2026 (added 2026-10-06)
+
+**Source.** Local methodology `student_resource/Documentation_template.md` (Team Noobs, prepared 2026-10-01) and code under `student_resource/code/business_entity_resolution/`. No public repository.
+
+**Allowed wording.** Team competition entry, co-built (Milind confirmed equal contribution). Multi-route blocking feeding a LightGBM pair classifier over 1,732,544 test S1 rows. Held-out macro F0.5 0.8476 → 0.8925; pair recall 0.8433 → 0.9068; public-leaderboard F0.5 0.819 → 0.869733 after a data-only unseen-country filter. 28 unit tests re-run and passing on 2026-10-06.
+
+**Limits.** Public scores come from a leaderboard test subset, not the private result; no rank is known. The held-out group was used for threshold tuning, so it is not an untouched test estimate. Do not claim sole authorship.
+
+## C-MAPSS team project (added 2026-10-06)
+
+**Source.** [Public repository](https://github.com/vks-g/cmapss-rul-hybrid); Milind's merged PRs #28, #29, #30, #37; `docs/ml-models-notebook.md`.
+
+**Allowed wording.** Four-person team; 4 merged PRs covering engine-level splits, fold-fitted regime normalization with tests, EDA, and matched raw-vs-engineered model comparison with tree SHAP. FD001 holdout RMSE: Random Forest raw 30.759 → engineered 26.472.
+
+**Limits.** Mean CV RMSE did not improve for any model, so the holdout gain is not a general feature advantage. Do not claim review counts or ownership of teammates' phases.
+
+## BlogApp contribution (retired from public pages 2026-10-06)
+
+Removed from both résumés and both portfolio editions as too minor to headline. Kept here as provenance.
 
 **Source.** [Merged pull request #2](https://github.com/Pinfinity07/BlogApp/pull/2).
 
