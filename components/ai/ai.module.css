@@ -1857,11 +1857,21 @@
 .modelFrom { background: var(--signal-muted); }
 .modelTo { background: var(--signal-blue); }
 .modelCaption { color: var(--signal-muted); font-size: 0.8rem; line-height: 1.5; }
-.modelStudy > a { align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid var(--signal-red); font-size: 0.9rem; font-weight: 650; }
-.modelStudy > a:is(:hover, :focus-visible) { color: var(--signal-red); }
-.modelStudy > a:focus-visible { outline: 3px solid var(--signal-red); outline-offset: 4px; }
+.modelLinks { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+.modelLinks a { display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid var(--signal-red); font-size: 0.9rem; font-weight: 650; }
+.modelLinks a:is(:hover, :focus-visible) { color: var(--signal-red); }
+.modelLinks a:focus-visible { outline: 3px solid var(--signal-red); outline-offset: 4px; }
+.modelStudy[data-model-study="evalbar"] { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "label metrics" "name metrics" "title metrics" "summary metrics" "links metrics"; grid-template-rows: auto auto auto auto 1fr; column-gap: clamp(28px, 4vw, 64px); row-gap: 14px; align-items: start; }
+.modelStudy[data-model-study="evalbar"] > .studyLabel { grid-area: label; }
+.modelStudy[data-model-study="evalbar"] > h3 { grid-area: name; }
+.modelStudy[data-model-study="evalbar"] > .modelTitle { grid-area: title; }
+.modelStudy[data-model-study="evalbar"] > p:not(.studyLabel):not(.modelTitle):not(.modelLinks) { grid-area: summary; }
+.modelStudy[data-model-study="evalbar"] > .modelMetrics { grid-area: metrics; margin-top: 0; }
+.modelStudy[data-model-study="evalbar"] > .modelLinks { grid-area: links; }
 @media (max-width: 900px) {
   .modelGrid { grid-template-columns: minmax(0, 1fr); }
+  .modelStudy[data-model-study="evalbar"] { display: flex; align-items: stretch; }
+  .modelStudy[data-model-study="evalbar"] > .modelLinks { align-self: flex-start; }
 }
 @media (max-width: 767px) {
   .modelWork .sectionHeading { grid-template-columns: minmax(0, 1fr); gap: 12px; }

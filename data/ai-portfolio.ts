@@ -37,6 +37,26 @@ export const truthLens = {
 
 export const modelWork = [
   {
+    slug: "evalbar",
+    name: "evalbar",
+    label: "Open-source tool · Solo · PyPI",
+    title: "LLM evals that gate pull requests",
+    summary: "Traces tokens, latency and cost per case, and fails CI when accuracy drops or cost rises. I used it on my feedback-triage classifier.",
+    unit: "Classifier accuracy · higher is better",
+    scale: 100,
+    format: "percent",
+    bars: [
+      { label: "Sentiment, prompt v1 → v2", from: 94, to: 100 },
+      { label: "Theme, prompt v2 → v3", from: 96, to: 98 },
+    ],
+    caption: "50 hand-labelled synthetic cases; not production accuracy.",
+    source: "https://github.com/MilindDevX/evalbar",
+    links: [
+      { label: "PyPI", href: "https://pypi.org/project/evalbar/" },
+      { label: "Case study", href: "https://github.com/MilindDevX/evalbar/blob/main/docs/case-study-feedbackos.md" },
+    ],
+  },
+  {
     slug: "amazon-ml",
     name: "Amazon ML Challenge 2026",
     label: "Team competition · Co-built",
@@ -71,8 +91,8 @@ export const aiStudies = [
     slug: "feedbackos",
     name: "FeedbackOS",
     label: "Applied AI workflow · Solo",
-    summary: "Feedback → queued classification → human review. Built with BullMQ, OpenAI, and Zod, with organization-scoped summaries.",
-    boundary: "Low-confidence output stays reviewable. Known gap: under OpenAI 429 rate limits, a hard-coded mock fallback can still be returned.",
+    summary: "Feedback → queued classification → human review, on Groq, Vercel Queues and Zod.",
+    boundary: "Low-confidence output stays reviewable. Its accuracy comes from 50 synthetic cases, not production traffic.",
     href: "/work/feedbackos",
     image: "/images/projects/feedbackos-review-queue.webp",
   },
@@ -88,8 +108,8 @@ export const aiStudies = [
 ] as const;
 
 export const aiCapabilities = [
-  { name: "Model training & evaluation", detail: "Python · LightGBM · XGBoost · scikit-learn · SHAP · cross-validation", evidence: "Amazon ML / C-MAPSS", href: "/ai#model-work" },
-  { name: "AI product systems", detail: "OpenAI SDK · BullMQ · Zod · FastAPI", evidence: "FeedbackOS / TruthLens", href: "/work/feedbackos" },
+  { name: "Model training & evaluation", detail: "Python · LightGBM · XGBoost · scikit-learn · SHAP · LiteLLM · LLM-as-judge", evidence: "Amazon ML / C-MAPSS / evalbar", href: "/ai#model-work" },
+  { name: "AI product systems", detail: "Groq · OpenAI-compatible SDK · Vercel Queues · Zod · FastAPI", evidence: "FeedbackOS / TruthLens", href: "/work/feedbackos" },
   { name: "Data and delivery", detail: "pandas · SQL · PostgreSQL · React · TypeScript", evidence: "Beijing PM2.5 / MedMarket", href: "/ai#range" },
 ] as const;
 

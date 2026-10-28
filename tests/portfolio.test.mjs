@@ -145,6 +145,13 @@ test("TruthLens has a complete experiment-log case study", async () => {
   assert.ok(html.toLowerCase().includes("not uploaded"));
 });
 
+test("AI model work leads with evalbar and bounds its numbers", async () => {
+  const html = (await page("/ai")).html.replace(/<!-- -->/g, "");
+  assert.ok(html.indexOf('data-model-study="evalbar"') < html.indexOf('data-model-study="amazon-ml"'));
+  for (const fact of ["94% → 100%", "96% → 98%", "50 hand-labelled synthetic cases", "not production accuracy", "https://pypi.org/project/evalbar/", "https://github.com/MilindDevX/evalbar"])
+    assert.ok(html.includes(fact), `evalbar missing ${fact}`);
+});
+
 test("AI capabilities are linked to real project evidence", async () => {
   const { html } = await page("/ai");
   for (const capability of [
@@ -296,7 +303,7 @@ test("applied AI projects use distinct scenes and retain canonical destinations"
   assert.equal((html.match(/data-ai-study="medmarket"/g) ?? []).length, 1);
   assert.ok(html.includes('href="/work/feedbackos"'));
   assert.ok(html.includes('href="/work/medmarket"'));
-  assert.ok(html.includes("hard-coded mock fallback"));
+  assert.ok(html.includes("50 synthetic cases, not production traffic"));
   assert.ok(html.includes("human verification"));
 });
 
@@ -377,8 +384,10 @@ test("AI-context public copy stays evidence-bounded and publishable source stays
     assert.ok(!result.html.includes("Current résumé"));
     assert.ok(!result.html.includes("Milind_Bansal_Full_Stack_Resume.pdf"));
   }
+  for (const text of [ai.html, aiData]) assert.ok(text.includes("not production traffic"), "FeedbackOS accuracy must name its synthetic test set");
+  for (const text of [feedback.html, caseEvidence]) assert.ok(text.includes("instead of returning a placeholder result"), "FeedbackOS must disclose its reviewed failure handling");
+  assert.ok(!feedback.html.includes("hard-coded mock fallback"), "Retired 429 fallback must not be described as current");
   for (const text of [ai.html, feedback.html, aiData, caseEvidence]) {
-    assert.ok(text.includes("hard-coded mock fallback"), "FeedbackOS must disclose its reviewed 429 fallback");
     assert.ok(!text.includes("prevents"), "Evidence copy must not claim unexecuted prevention behavior");
   }
   const privateAddress = "@nst.rishihood.edu.in";
@@ -421,10 +430,10 @@ test("documentation records Signal Cinema and rejects stale notebook claims", as
   assert.ok(!review.includes("Inference Notebook"));
 });
 
-test("AI homepage keeps its recruiter summary under 650 words", async () => {
+test("AI homepage keeps its recruiter summary under 730 words", async () => {
   const { html } = await page('/ai');
   const text = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<[^>]*>/g, ' ').replace(/&[^;]+;/g, ' ').trim();
-  assert.ok(text.split(/\s+/).length < 650, 'Homepage must stay concise; detailed evidence belongs in case studies');
+  assert.ok(text.split(/\s+/).length < 730, 'Homepage must stay concise; detailed evidence belongs in case studies');
 });
 
 test("unknown and machine-readable résumé routes stay private", async () => {

@@ -28,9 +28,9 @@ Verified 2026-09-11. This is the source of truth for portfolio copy. Repository 
 
 ## FeedbackOS
 
-**Sources.** [Repository revision](https://github.com/MilindDevX/feedbackos/tree/440bdf5c970e0b084781fb28507a3d3d6845be30); [public demo](https://feedbackos.vercel.app).
+**Sources.** [Repository revision](https://github.com/MilindDevX/feedbackos/tree/5515f8d) (re-reviewed 2026-10-28; previously 440bdf5); [public demo](https://feedbackos.vercel.app); measured accuracy from [evalbar's case study](https://github.com/MilindDevX/evalbar/blob/main/docs/case-study-feedbackos.md).
 
-**Allowed wording.** Full-stack feedback-triage prototype that ingests feedback, queues classification into theme, sentiment, and product area, then presents filtered feedback and aggregate trends. The reviewed source uses Next.js 16.2.7, React 19.2.4, TypeScript, Prisma/PostgreSQL, Redis/BullMQ, NextAuth, Zod, and the OpenAI SDK. It includes separate queue workers, bounded classification concurrency, Zod-validated model output, a low-confidence review path, organization-scoped cached summaries, capped CSV ingestion, and AES-256-GCM integration-credential storage.
+**Allowed wording.** Full-stack feedback-triage product that saves feedback to PostgreSQL, dispatches item IDs to Vercel Queues, and classifies theme, sentiment and product area with Groq-hosted `gpt-oss-120b` through the OpenAI-compatible SDK. Two-minute leases, a watchdog and a daily cron protect against lost or stale results; failed calls retry at most three times honouring `Retry-After`, then mark the item `CLASSIFICATION_ERROR` (the old hard-coded 429 mock fallback is gone). CSV import goes through private Vercel Blob, validated whole before writes (20 MiB / 2,000 rows). Zod validates model output; low-confidence items go to review. Zendesk and Intercom imports still use the older BullMQ worker. evalbar numbers (50 synthetic cases, not production accuracy): v2→v3 theme and product-area accuracy 96%→98% each, no regressions; hold-out 9/11→11/11. Test files exist (Jest, Playwright) but were not executed for this review.
 
 **Ownership provenance.** Milind directly confirmed that he designed and built this solo, end to end. Repository inspection alone does not establish contribution scope.
 
