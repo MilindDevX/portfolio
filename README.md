@@ -18,8 +18,7 @@ Plain edition links move directly between the full-stack and AI portfolios; ther
 
 The AI hero's View résumé link opens `/docs/Milind_Bansal_AI_Internship_Resume.pdf` in a new tab. This public asset must match the approved master in `docs/resumes/`; the full-stack edition retains its separate résumé.
 
-TruthLens's ten evidence logs use content-sized chapters, consistent heading/body scale, authentic interface captures, and a same-scale release comparison. Its LIAR result is described as held-out evaluation, not evidence that the entire dataset was unseen. Local audit decisions and verification scope: `docs/ai-case-study-audit-review.md`.
-
+TruthLens's ten evidence logs use content-sized chapters, consistent heading/body scale, authentic interface captures, and a same-scale release comparison. Its LIAR result is described as held-out evaluation, not evidence that the entire dataset was unseen.
 ## Local verification
 
 ```bash
