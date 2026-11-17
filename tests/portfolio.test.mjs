@@ -23,20 +23,21 @@ const publishableText = async (directory) => {
 test("landing page publishes the approved full-stack profile", async () => {
   const { response, html } = await page("/");
   assert.equal(response.status, 200);
-  for (const fact of ["Milind Bansal", "Computer Science and Artificial Intelligence", "Newton School of Technology at Rishihood University", "9.28/10", "milindsk8r@gmail.com", "RouteLens", "FeedbackOS", "MedMarket", "Beijing PM2.5", "Amazon ML Challenge 2026", "C-MAPSS"]) {
+  for (const fact of ["Milind Bansal", "Computer Science and Artificial Intelligence", "Newton School of Technology at Rishihood University", "9.28/10", "milindsk8r@gmail.com", "FeedbackOS", "skipq", "MedMarket", "evalbar", "RouteLens", "Beijing PM2.5", "Amazon ML Challenge 2026", "C-MAPSS", "12 merged PRs", "Open to a remote internship, January to July 2027"]) {
     assert.ok(html.includes(fact), `Missing approved fact: ${fact}`);
   }
   for (const singular of ["Newton School of Technology at Rishihood University", "CGPA: 9.28/10"]) {
     assert.equal(html.split(singular).length - 1, 1, `${singular} must render exactly once`);
   }
-  assert.ok(html.includes("Built solo for a Digital Heroes internship qualifying round; not client work or an endorsement."));
-  assert.ok(html.includes("Artifact transcript"));
+  for (const stale of ["year-long", "4 merged PRs", "received no response", "Redis · BullMQ"]) assert.ok(!html.includes(stale), `Stale copy on the landing page: ${stale}`);
+  assert.ok(html.indexOf('id="feedbackos-title"') < html.indexOf('id="skipq-title"') && html.indexOf('id="skipq-title"') < html.indexOf('id="medmarket-title"'), "Featured order must be FeedbackOS, skipq, MedMarket");
 });
 
 const work = [
   ["routelens", "RouteLens", "https://github.com/MilindDevX/routelens", "https://routelens-xi.vercel.app"],
   ["feedbackos", "FeedbackOS", "https://github.com/MilindDevX/feedbackos", "https://feedbackos.vercel.app"],
   ["medmarket", "MedMarket", "https://github.com/MilindDevX/MedMarket", "https://med-market-self.vercel.app"],
+  ["skipq", "skipq", "https://github.com/MilindDevX/skipq", null],
 ];
 
 for (const [slug, name, source, demo] of work) {
@@ -46,7 +47,7 @@ for (const [slug, name, source, demo] of work) {
     assert.equal(response.status, 200);
     assert.ok(html.includes("<h1") && html.includes(name));
     assert.ok(html.includes(`href="${source}"`));
-    assert.ok(html.includes(`href="${demo}"`));
+    if (demo) assert.ok(html.includes(`href="${demo}"`));
     for (const section of ["The problem", "Constraints", "Decisions", "Reflection"]) assert.ok(html.includes(section), `${name} is missing ${section}`);
   });
 }
@@ -117,7 +118,7 @@ test("TruthLens leads the AI portfolio with honest release evidence", async () =
     assert.ok(html.toLowerCase().includes(fact.toLowerCase()), `Missing TruthLens fact: ${fact}`);
   assert.ok(html.includes('href="/work/truthlens"'));
   assert.ok(html.includes('href="https://github.com/MilindDevX/TruthLens"'));
-  assert.ok(html.includes('href="https://frontend-ten-theta-81.vercel.app/"'));
+  assert.ok(html.includes('href="https://truthlens-milind.vercel.app/"'));
 });
 
 test("TruthLens authentic captures ship as optimized assets", async () => {
@@ -407,27 +408,16 @@ test("touched AI sources and task report carry accurate ABOUTME evidence", async
   for (const file of files) assert.match(await readFile(new URL(file, import.meta.url), "utf8"), /^(?:\/\/ ABOUTME:|\/\* ABOUTME:)/, `${file} needs a file-leading ABOUTME comment`);
   const aiCss = await readFile(new URL("../components/ai/ai.module.css", import.meta.url), "utf8");
   assert.match(aiCss, /\.contactLinks a:focus-visible\s*\{/);
-  const report = await readFile(new URL("../.superpowers/sdd/2026-09-10-ai-portfolio/tasks-4-8-report.md", import.meta.url), "utf8");
-  assert.ok(!report.includes("New AI source and stylesheet files include file-leading `ABOUTME` comments"));
 });
 
-test("documentation records AI routes and TruthLens evidence limits", async () => {
+test("documentation records the routes, résumé checks and TruthLens evidence limits", async () => {
   const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
-  const evidence = await readFile(new URL("../docs/portfolio-evidence.md", import.meta.url), "utf8");
-  assert.ok(readme.includes("`/ai`"));
-  assert.ok(readme.includes("`/work/truthlens`"));
-  assert.ok(evidence.includes("0.5648"));
-  assert.ok(evidence.includes("0.75"));
-  assert.ok(evidence.toLowerCase().includes("not uploaded"));
-});
-
-test("documentation records Signal Cinema and rejects stale notebook claims", async () => {
-  const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
-  const review = await readFile(new URL("../docs/portfolio-review.md", import.meta.url), "utf8");
+  for (const route of ["`/ai`", "`/work/truthlens`", "`/work/feedbackos`", "`/work/skipq`", "`/work/medmarket`", "`/work/routelens`"]) assert.ok(readme.includes(route), route);
+  assert.ok(readme.includes("tests/ai-resume-pdf.swift"));
+  assert.ok(readme.includes("held-out evaluation"));
   assert.ok(readme.includes("Signal Cinema"));
-  assert.ok(review.includes("three-scene TruthLens"));
   assert.ok(!readme.includes("Inference Notebook"));
-  assert.ok(!review.includes("Inference Notebook"));
+  assert.ok(!readme.includes("docs/portfolio-evidence.md"), "README must not point at removed internal notes");
 });
 
 test("AI homepage keeps its recruiter summary under 730 words", async () => {
@@ -502,8 +492,9 @@ test("optimized local identity and approved fonts ship as WebP/WOFF2", async () 
 });
 
 test("project specimens use authentic home or demo dashboard captures", async () => {
-  const [landing, routeLens, feedback, market] = await Promise.all([page("/"), page("/work/routelens"), page("/work/feedbackos"), page("/work/medmarket")]);
-  for (const result of [landing, routeLens]) assert.ok(result.html.includes("routelens-directory-home.webp"), "RouteLens needs its public directory home");
+  const [landing, routeLens, feedback, market, skipq] = await Promise.all([page("/"), page("/work/routelens"), page("/work/feedbackos"), page("/work/medmarket"), page("/work/skipq")]);
+  assert.ok(routeLens.html.includes("routelens-directory-home.webp"), "RouteLens needs its public directory home");
+  for (const result of [landing, skipq]) assert.ok(result.html.includes("skipq-race-test-run.webp"), "skipq needs its real test-run capture");
   for (const result of [landing, feedback]) assert.ok(result.html.includes("feedbackos-review-queue.webp"), "FeedbackOS needs its seeded review-queue capture");
   for (const result of [landing, market]) assert.ok(result.html.includes("medmarket-admin-dashboard.webp"), "MedMarket needs its public demo dashboard");
   assert.ok(landing.html.includes("48 seed items. Needs Review marks low-confidence classifications; not usage or traction."));

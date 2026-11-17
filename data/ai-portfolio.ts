@@ -4,14 +4,14 @@ export const aiProfile = {
   label: "MILIND BANSAL · APPLIED AI ENGINEER",
   headline: "I build with AI. I don’t outsource judgment to it.",
   introduction: "I’m Milind, a CS & AI student who likes taking an idea from a model experiment to working software—and questioning it along the way.",
-  availability: "Looking for a year-long AI engineering internship from early 2027. Scoped freelance work welcome.",
+  availability: "Open to a remote AI engineering internship, January to July 2027. Scoped freelance work welcome.",
   educationNote: "Finance is my secondary area of study alongside the CS & AI degree—a complementary view of products, incentives, and decisions.",
   interests: "Off screen: games, manga, music, the gym, and time with friends. New projects usually start with something I want solved for myself.",
   contact: {
     label: "Open channel / AI opportunities",
     headline: "An idea worth building?",
     emphasis: "Let’s talk.",
-    invitation: "Year-long AI internships from early 2027 first. Scoped freelance work welcome.",
+    invitation: "Remote AI internships, January to July 2027, first. Scoped freelance work welcome.",
   },
 } as const;
 
@@ -32,7 +32,7 @@ export const truthLens = {
   explainability: "SHAP describes baseline token contributions; it does not establish whether a claim is factually true.",
   monitoring: "Drift monitoring can detect distribution change; it cannot guarantee calibration.",
   source: "https://github.com/MilindDevX/TruthLens",
-  live: "https://frontend-ten-theta-81.vercel.app/",
+  live: "https://truthlens-milind.vercel.app/",
 } as const;
 
 export const modelWork = [
@@ -73,15 +73,15 @@ export const modelWork = [
   {
     slug: "cmapss",
     name: "C-MAPSS",
-    label: "Four-person team · 4 merged PRs",
+    label: "Five-person team · 12 merged PRs",
     title: "Turbofan remaining-useful-life prediction",
-    summary: "Leakage-safe engine splits and fold-fitted normalization, then matched raw-versus-engineered model comparisons with SHAP.",
-    unit: "FD001 holdout RMSE in cycles · lower is better",
-    scale: 40,
+    summary: "Leakage-safe engine splits, fold-fitted normalization, raw-versus-engineered comparisons with SHAP, and a validation toolkit.",
+    unit: "Near-failure RMSE, official FD001 test engines · lower is better",
+    scale: 16,
     bars: [
-      { label: "Random Forest, raw → engineered features", from: 30.8, to: 26.5 },
+      { label: "Random Forest, raw → engineered features", from: 13.5, to: 7.5 },
     ],
-    caption: "Mean CV RMSE showed no general advantage; this is one holdout.",
+    caption: "Near failure only; over whole engine lives, 27.6 engineered vs 26.2 raw.",
     source: "https://github.com/vks-g/cmapss-rul-hybrid",
   },
 ] as const;

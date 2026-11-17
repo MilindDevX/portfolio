@@ -14,7 +14,7 @@ export function AiRange() {
           <li key={item.name}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <p>{item.kind}</p>
-            <h3><a href={item.href}>{item.name}</a></h3>
+            <h3><a className={styles.rangeTitleLink} href={item.href}>{item.name}</a></h3>
             <p>{item.summary}</p>
           </li>
         ))}

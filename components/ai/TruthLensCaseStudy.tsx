@@ -26,7 +26,7 @@ export function TruthLensCaseStudy() {
         <header className={styles.caseCinemaHero} data-ai-chapter="CASE STUDY">
           <span className={styles.headerSentinel} data-ai-header-sentinel aria-hidden="true" />
           <nav aria-label="Case study breadcrumb" className={styles.caseBreadcrumb}>
-            <a href="/ai">Applied AI portfolio</a><span aria-hidden="true">/</span><span aria-current="page">TruthLens</span>
+            <a className={styles.truthBreadcrumbLink} href="/ai">Applied AI portfolio</a><span aria-hidden="true">/</span><span aria-current="page">TruthLens</span>
           </nav>
           <p className={styles.caseEyebrow}>EXPERIMENT LOG / SOLO</p>
           <h1 id="truthlens-case-title">Can a model spot <span className={styles.storyQuestionTail}>misinformation?</span></h1>

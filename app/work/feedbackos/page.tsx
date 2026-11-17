@@ -1,4 +1,5 @@
 import { CaseStudyShell, caseStudyMetadata } from "@/components/CaseStudyShell";
-import { projects } from "@/data/portfolio";
-export const metadata = caseStudyMetadata(projects[1]);
-export default function FeedbackOSPage() { return <CaseStudyShell project={projects[1]} next={projects[2]} />; }
+import { nextFeatured, projectBySlug } from "@/data/portfolio";
+const project = projectBySlug("feedbackos");
+export const metadata = caseStudyMetadata(project);
+export default function FeedbackOSPage() { return <CaseStudyShell project={project} next={nextFeatured("feedbackos")} />; }

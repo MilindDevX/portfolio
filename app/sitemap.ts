@@ -2,7 +2,7 @@
 import type { MetadataRoute } from "next";
 
 const origin = "https://portfolio-milind.vercel.app";
-const routes = ["/", "/ai", "/work/feedbackos", "/work/medmarket", "/work/routelens", "/work/truthlens"];
+const routes = ["/", "/ai", "/work/feedbackos", "/work/skipq", "/work/medmarket", "/work/routelens", "/work/truthlens"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({ url: `${origin}${route}`, changeFrequency: "monthly", priority: route === "/" || route === "/ai" ? 1 : 0.7 }));
