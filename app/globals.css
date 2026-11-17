@@ -28,6 +28,14 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 .wordmark,.header-resume,.edition-link,.site-header nav a { display:flex; align-items:center; min-height:44px }
 .wordmark { justify-self:start; gap:12px }
 .wordmark>span { display:grid; place-items:center; width:38px; height:38px; background:var(--ink); color:var(--surface); font:.9rem var(--font-display),sans-serif }
+/* The MB mark is one stroke; hovering the wordmark redraws it from its blue starting point. */
+.wordmark-mark { width:100%; height:100% }
+.wordmark-mark path { fill:none; stroke:var(--paper); stroke-width:40; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1600; stroke-dashoffset:0 }
+.wordmark-mark circle { fill:#3b6cf0; transform-origin:113px 372px; transition:transform .5s var(--ease) }
+.wordmark:hover .wordmark-mark path,.wordmark:focus-visible .wordmark-mark path { animation:mark-redraw .9s var(--ease) }
+.wordmark:hover .wordmark-mark circle,.wordmark:focus-visible .wordmark-mark circle { transform:scale(1.25) }
+@keyframes mark-redraw { from { stroke-dashoffset:1600 } to { stroke-dashoffset:0 } }
+@media (prefers-reduced-motion:reduce) { .wordmark:hover .wordmark-mark path,.wordmark:focus-visible .wordmark-mark path { animation:none } .wordmark-mark circle { transition:none } .wordmark:hover .wordmark-mark circle,.wordmark:focus-visible .wordmark-mark circle { transform:none } }
 .wordmark strong,.site-header nav a,.header-resume,.edition-link { font-size:.85rem }
 .site-header nav { display:flex; gap:30px } .site-header nav a:hover { color:var(--blue) }
 .site-header .primary-nav { justify-self:center }
