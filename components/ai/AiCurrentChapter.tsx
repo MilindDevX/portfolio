@@ -19,7 +19,6 @@ export function AiCurrentChapter() {
             <div><dt>CGPA</dt><dd>{education.gpa.replace(/^CGPA:\s*/, "")}</dd></div>
             <div><dt>Minor</dt><dd>{education.minor}</dd></div>
           </dl>
-          <p>{aiProfile.educationNote}</p>
         </div>
         <p className={styles.personalLine}>{aiProfile.interests}</p>
       </div>

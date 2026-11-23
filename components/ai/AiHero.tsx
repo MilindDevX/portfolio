@@ -1,6 +1,6 @@
 // ABOUTME: Full-viewport Signal Cinema introduction with perceptible passive layers and the shared avatar.
 import Image from "next/image";
-import { aiProfile } from "@/data/ai-portfolio";
+import { aiProfile, aiProofPoints } from "@/data/ai-portfolio";
 import { destinations, publicProfile } from "@/data/profile";
 import styles from "./ai.module.css";
 
@@ -15,6 +15,14 @@ export function AiHero() {
         <p className={styles.roleLabel}>{aiProfile.label}</p>
         <h1 id="ai-intro-title">{aiProfile.headline}</h1>
         <p className={styles.heroIntroduction}>{aiProfile.introduction}</p>
+        <dl className={styles.heroProof} aria-label="Proof points">
+          {aiProofPoints.map((point) => (
+            <div key={point.figure}>
+              <dt><a href={point.href}>{point.figure} <span aria-hidden="true">↗</span></a></dt>
+              <dd>{point.label}</dd>
+            </div>
+          ))}
+        </dl>
         <p className={styles.availability}>{aiProfile.availability}</p>
         <div className={styles.heroActions}>
           <a href={`mailto:${publicProfile.email}`}>START A CONVERSATION ↗</a>

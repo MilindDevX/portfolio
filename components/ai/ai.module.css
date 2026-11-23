@@ -133,6 +133,40 @@
   to { opacity: 1; }
 }
 
+/* Proof strip: four AI-relevant figures under the introduction, each linked to its evidence. */
+.heroProof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(620px, 100%);
+  margin-top: clamp(26px, 3vw, 40px);
+  border-top: 1px solid var(--signal-rule);
+}
+
+.heroProof > div { padding: 14px 14px 0 0; }
+.heroProof > div + div { padding-left: 14px; border-left: 1px solid var(--signal-rule); }
+.heroProof dt { display: flex; align-items: center; min-height: 44px; margin-block: -8px; color: #f3f0e8; font: 520 clamp(1.3rem, 2vw, 1.8rem) / 1 var(--font-display), sans-serif; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.heroProof dt a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; transition: color 180ms var(--signal-ease); }
+.heroProof dt a span { font-size: max(12px, 0.55em); transition: transform 180ms var(--signal-ease); }
+.heroProof dt a:hover,
+.heroProof dt a:focus-visible { color: var(--signal-red); }
+.heroProof dt a:hover span,
+.heroProof dt a:focus-visible span { transform: translate(3px, -3px); }
+.heroProof dt a:focus-visible { outline: 3px solid var(--signal-red); outline-offset: 4px; }
+.heroProof dd { margin-top: 8px; color: var(--signal-muted); font-size: 0.8rem; line-height: 1.35; }
+
+@media (max-width: 767px) {
+  .heroProof { grid-template-columns: 1fr; }
+  .heroProof > div { display: grid; grid-template-columns: minmax(0, 9.5rem) 1fr; gap: 14px; align-items: center; padding: 12px 0; }
+  .heroProof > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--signal-rule); }
+  .heroProof dd { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroProof dt a,
+  .heroProof dt a span { transition: none; }
+  .heroProof dt a:hover span { transform: none; }
+}
+
 .availability {
   max-width: 54ch;
   margin-top: 18px;
@@ -928,6 +962,8 @@
 
 .feedbackCopy a:focus-visible,
 .marketCopy a:focus-visible { outline: 3px solid var(--signal-red); outline-offset: 4px; }
+
+.studyLinks { display: flex; flex-wrap: wrap; gap: 0 28px; }
 
 .feedbackMedia,
 .marketMedia { margin: 0; overflow: clip; }

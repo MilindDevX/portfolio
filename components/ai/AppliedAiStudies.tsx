@@ -22,8 +22,9 @@ export function AppliedAiStudies() {
           <p className={styles.studyLabel}>{feedback.label}</p>
           <h3>{feedback.name}</h3>
           <p>{feedback.summary}</p>
+          <p>{feedback.proof}</p>
           <p className={styles.studyBoundary}>{feedback.boundary}</p>
-          <a href={feedback.href}>Case study ↗</a>
+          <div className={styles.studyLinks}><a href={feedback.href}>Case study ↗</a><a href={feedback.live}>Live app ↗</a><a href={feedback.source}>Source ↗</a></div>
         </div>
         <div className={styles.queueTrace} aria-label="FeedbackOS AI workflow">
           <span>Queue</span><i aria-hidden="true" /><span>Validate</span><i aria-hidden="true" /><span>Review</span>

@@ -1,12 +1,18 @@
 // ABOUTME: Evidence-bounded content for the standalone applied-AI portfolio.
+// AI hero proof strip: three AI-relevant figures, each linked to public evidence. The CGPA is in the Current chapter section, so it is not repeated here.
+export const aiProofPoints = [
+  { figure: "79 tests", label: "evalbar, LLM evals on PyPI", href: "https://pypi.org/project/evalbar/" },
+  { figure: "13.5 → 7.5", label: "C-MAPSS near-failure RMSE, five-person team", href: "https://github.com/vks-g/cmapss-rul-hybrid" },
+  { figure: "#2293", label: "Merged into nanocoder, an open-source coding agent", href: "https://github.com/Nano-Collective/nanocoder/pull/2293" },
+] as const;
+
 export const aiProfile = {
   role: "Applied AI engineer",
   label: "MILIND BANSAL · APPLIED AI ENGINEER",
   headline: "I build with AI. I don’t outsource judgment to it.",
   introduction: "I’m Milind, a CS & AI student who likes taking an idea from a model experiment to working software—and questioning it along the way.",
   availability: "Open to a remote AI engineering internship, January to July 2027. Scoped freelance work welcome.",
-  educationNote: "Finance is my secondary area of study alongside the CS & AI degree—a complementary view of products, incentives, and decisions.",
-  interests: "Off screen: games, manga, music, the gym, and time with friends. New projects usually start with something I want solved for myself.",
+  interests: "Off screen: games, manga, music, the gym and friends. My projects start with problems I want solved.",
   contact: {
     label: "Open channel / AI opportunities",
     headline: "An idea worth building?",
@@ -41,12 +47,12 @@ export const modelWork = [
     name: "evalbar",
     label: "Open-source tool · Solo · PyPI",
     title: "LLM evals that gate pull requests",
-    summary: "Traces tokens, latency and cost per case, and fails CI when accuracy drops or cost rises. I used it on my feedback-triage classifier.",
+    summary: "Traces tokens, latency, cost and agent tool calls per case, scores RAG retrieval with recall@k, and fails CI when accuracy drops or cost rises. I used it on my feedback-triage classifier.",
     unit: "Classifier accuracy · higher is better",
     scale: 100,
     format: "percent",
     bars: [
-      { label: "Sentiment, prompt v1 → v2", from: 94, to: 100 },
+      { label: "Sentiment, prompt v1 → v2 (+13% cost)", from: 94, to: 100 },
       { label: "Theme, prompt v2 → v3", from: 96, to: 98 },
     ],
     caption: "50 hand-labelled synthetic cases; not production accuracy.",
@@ -92,8 +98,11 @@ export const aiStudies = [
     name: "FeedbackOS",
     label: "Applied AI workflow · Solo",
     summary: "Feedback → queued classification → human review, on Groq, Vercel Queues and Zod.",
+    proof: "evalbar exposed two classifier errors. The fix is live, and an 11-case hold-out set went from 9/11 to 11/11.",
     boundary: "Low-confidence output stays reviewable. Its accuracy comes from 50 synthetic cases, not production traffic.",
     href: "/work/feedbackos",
+    live: "https://feedbackos.vercel.app/",
+    source: "https://github.com/MilindDevX/feedbackos",
     image: "/images/projects/feedbackos-review-queue.webp",
   },
   {
