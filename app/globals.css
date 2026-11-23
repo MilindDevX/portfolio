@@ -43,16 +43,16 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 .edition-link:hover { color:var(--blue) }
 .header-resume { justify-self:end; gap:12px }
 
-.hero { position:relative; display:grid; grid-template-columns:repeat(12,1fr); min-height:calc(100svh - 84px); padding-top:clamp(36px,6vw,80px); padding-bottom:72px; overflow:clip }
+.hero { position:relative; display:grid; grid-template-columns:repeat(12,1fr); align-content:start; row-gap:clamp(24px,3vw,40px); min-height:calc(100svh - 84px); padding-top:clamp(28px,4vw,56px); padding-bottom:72px; overflow:clip }
 .hero-status { grid-column:1/6; display:flex; gap:10px; align-items:center; align-self:start; color:var(--muted); font-size:.82rem; animation:assemble .78s .04s var(--ease) both }
 .status-dot { width:9px; height:9px; border-radius:50%; background:#238636; box-shadow:0 0 0 5px color-mix(in srgb,#238636,transparent 82%) }
-.hero-title-wrap { grid-column:1/9; align-self:center; z-index:2 }
+.hero-title-wrap { grid-column:1/9; align-self:start; z-index:2 }
 .hero-index { margin-bottom:18px; font:.75rem/1 monospace; letter-spacing:.12em; animation:assemble .76s .12s var(--ease) both }
-.hero h1 { font:400 clamp(3.5rem,8.9vw,8rem)/.82 var(--font-display),sans-serif; letter-spacing:-.07em }
+.hero h1 { font:400 clamp(3.5rem,7.8vw,7.2rem)/.82 var(--font-display),sans-serif; letter-spacing:-.07em }
 .hero-line { display:block; animation:assemble-line .92s var(--ease) both }
 .hero-line:nth-child(1) { animation-delay:.16s }.hero-line:nth-child(2) { animation-delay:.24s }.hero-line:nth-child(3) { animation-delay:.32s }
 .hero h1 em,.section-intro h2 em,.about h2 em { color:var(--blue); font-style:normal }
-.hero-copy { grid-column:1/5; align-self:end; z-index:3; max-width:42ch; animation:assemble .9s .42s var(--ease) both }
+.hero-copy { grid-column:1/7; align-self:start; z-index:3; max-width:54ch; animation:assemble .9s .42s var(--ease) both }
 .hero-copy>p { font-size:clamp(1rem,1.4vw,1.18rem) } .hero-copy .action-link { margin-top:26px }
 .avatar-stage { position:absolute; right:var(--gutter); bottom:55px; width:min(42vw,570px); aspect-ratio:1/1.06; background:var(--butter); border-radius:50% 50% 24px 24px; overflow:hidden; animation:avatar-settle 1s .22s var(--ease) both }
 .avatar-stage img { position:absolute; z-index:2; left:3%; bottom:-1%; width:94% }
@@ -191,7 +191,7 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 @keyframes specimen-step { from { opacity:0; transform:translateY(14px) } to { opacity:1; transform:none } }
 
 @media (max-width:900px) {
-  .hero { min-height:auto } .hero-title-wrap { align-self:start; margin-top:56px }
+  .hero { min-height:auto } .hero-title-wrap { align-self:start; margin-top:16px }
   .team-work-list { grid-template-columns:repeat(2,minmax(0,1fr)) }
   .oss-grid { grid-template-columns:1fr; gap:40px }
   .ruled-section,.section-intro { grid-template-columns:1fr } .hero-title-wrap { grid-column:1/10 } .hero-copy { grid-column:1/6 } .avatar-stage { width:48vw }
@@ -204,7 +204,7 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
   html { scroll-padding-top:128px } .shell { padding-inline:20px }
   .site-header { grid-template-columns:1fr auto auto; min-height:72px } .site-header .primary-nav { order:4; grid-column:1/-1; width:100%; justify-content:space-between; border-top:1px solid var(--rule) }
   .site-header .primary-nav a { min-height:48px } .wordmark strong { display:none }
-  .hero { display:flex; flex-direction:column; min-height:auto; padding-top:34px; padding-bottom:48px; overflow:hidden }
+  .hero { display:flex; flex-direction:column; row-gap:0; min-height:auto; padding-top:34px; padding-bottom:48px; overflow:hidden }
   .hero-status { order:1 } .hero-title-wrap { order:2; align-self:stretch; margin-top:56px } .hero h1 { font-size:clamp(3.45rem,17.7vw,5rem) }
   .hero-copy { order:3; margin-top:36px; max-width:none } .avatar-stage { order:4; position:relative; right:auto; bottom:auto; width:100%; margin-top:48px }
   .selected-work { padding-top:72px } .section-intro { padding-bottom:48px } .section-intro h2,.ruled-section h2 { font-size:clamp(2.5rem,12vw,4rem) }
@@ -239,11 +239,27 @@ a:hover .arrow-mark { transform:translate(3px,-3px) }
 .oss-track { position:relative; display:block; height:14px; background:#e6e2d8 } .oss-track i,.oss-track b { position:absolute; inset-block:0; left:0 }
 .oss-track i { background:var(--rule) } .oss-track b { height:4px; top:5px; background:var(--blue) }
 .oss-bars strong { font:600 .95rem/1 var(--font-display),sans-serif; font-variant-numeric:tabular-nums }
+.oss-outside { margin-top:40px; padding-top:22px; border-top:1px solid var(--rule) } .oss-outside p { max-width:52ch; margin-top:12px; color:var(--muted) }
+.oss-outside a { display:flex; align-items:center; gap:6px; width:fit-content; min-height:44px; margin-bottom:2px; color:var(--ink); font-weight:600 }
+
+/* Hero proof strip: the four facts a recruiter checks first, each linked to its evidence.
+   Visible at first paint (transform-only entrance), so a paused animation never hides it. */
+.hero-proof { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); width:min(720px,calc(58vw - 2 * var(--gutter) - 24px)); margin-top:clamp(28px,3.2vw,44px); border-top:1px solid var(--ink); animation:proof-rise .8s .38s var(--ease) both }
+.hero-proof>div { padding:14px 14px 0 0 } .hero-proof>div+div { padding-left:14px; border-left:1px solid var(--rule) }
+.hero-proof dt { display:flex; align-items:center; min-height:44px; margin-block:-8px; font:500 clamp(1.45rem,2.3vw,2rem)/1 var(--font-display),sans-serif; letter-spacing:-.03em; font-variant-numeric:tabular-nums }
+.hero-proof dt a { display:inline-flex; align-items:center; gap:6px; min-height:44px; color:var(--ink); transition:color .2s }
+.hero-proof dt a svg { width:.5em; height:.5em; transition:transform .25s var(--ease) }
+.hero-proof dt a:hover,.hero-proof dt a:focus-visible { color:var(--blue) } .hero-proof dt a:hover svg,.hero-proof dt a:focus-visible svg { transform:translate(3px,-3px) }
+.hero-proof dd { margin-top:8px; color:var(--muted); font-size:.8rem; line-height:1.35 }
+@keyframes proof-rise { from { transform:translateY(16px) } to { transform:none } }
+@media (prefers-reduced-motion:reduce) { .hero-proof,.hero-proof dt a,.hero-proof dt a svg { animation:none; transition:none } .hero-proof dt a:hover svg { transform:none } }
+@media (max-width:1100px) { .hero-proof { grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:18px; width:min(560px,calc(52vw - 2 * var(--gutter) - 12px)) } .hero-proof>div:nth-child(3) { padding-left:0; border-left:0 } }
+@media (max-width:767px) { .hero-proof { width:100% } }
 
 /* Ambient motion: a blue start point travels each section's top rule while it is on screen,
    the same dot that starts the one-line MB mark. Transform only; paused off screen. */
-.ruled-section,.project-specimen { position:relative; container-type:inline-size }
-.ruled-section::before,.project-specimen::before { position:absolute; top:-4px; left:0; width:7px; height:7px; border-radius:50%; background:var(--blue); content:""; opacity:.85; transform:translateX(0) }
+.ruled-section,.project-specimen,.hero-proof { position:relative; container-type:inline-size }
+.ruled-section::before,.project-specimen::before,.hero-proof::before { position:absolute; top:-4px; left:0; width:7px; height:7px; border-radius:50%; background:var(--blue); content:""; opacity:.85; transform:translateX(0) }
 [data-path-onscreen="true"]::before { animation:path-travel 16s cubic-bezier(.45,0,.55,1) infinite }
 .project-specimen:nth-of-type(2n)::before,.ruled-section:nth-of-type(2n)::before { animation-delay:-5s }
 .project-specimen:nth-of-type(3n)::before,.ruled-section:nth-of-type(3n)::before { animation-delay:-11s }

@@ -149,6 +149,18 @@ export const featuredProjects = projects.filter((project) => project.featured);
 export const projectBySlug = (slug: Project["slug"]) => projects.find((project) => project.slug === slug)!;
 export const nextFeatured = (slug: Project["slug"]) => { const i = featuredProjects.findIndex((project) => project.slug === slug); return featuredProjects[(i + 1) % featuredProjects.length] ?? featuredProjects[0]; };
 
+// Hero proof strip: each figure links to public evidence except the CGPA, which comes from a college-issued record.
+export const proofPoints = [
+  { figure: "9.28", label: "CGPA out of 10, B.Tech CS & AI" },
+  { figure: "79 tests", label: "evalbar, published on PyPI", href: "https://pypi.org/project/evalbar/" },
+  { figure: "55/55", label: "skipq integration tests pass under go test ‑race", href: "https://github.com/MilindDevX/skipq" },
+  { figure: "#2293", label: "Merged into nanocoder, an open-source coding agent", href: "https://github.com/Nano-Collective/nanocoder/pull/2293" },
+] as const;
+
+export const outsideContributions = [
+  { name: "nanocoder #2293", detail: "Autosave no longer drops a session's pin and creation date when it recreates the session. Merged 20 Nov 2026.", href: "https://github.com/Nano-Collective/nanocoder/pull/2293" },
+] as const;
+
 export const labNote = {
   name: "Beijing PM2.5",
   label: "Data lab · Six-person coursework",
