@@ -420,10 +420,11 @@ test("documentation records the routes, résumé checks and TruthLens evidence l
   assert.ok(!readme.includes("docs/portfolio-evidence.md"), "README must not point at removed internal notes");
 });
 
-test("AI homepage keeps its recruiter summary under 730 words", async () => {
-  const { html } = await page('/ai');
+// Both editions share one word cap so neither homepage looks crowded or like an information dump (Milind, 23 Nov 2026).
+for (const path of ["/", "/ai"]) test(`${path} homepage stays under 850 words`, async () => {
+  const { html } = await page(path);
   const text = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<[^>]*>/g, ' ').replace(/&[^;]+;/g, ' ').trim();
-  assert.ok(text.split(/\s+/).length < 730, 'Homepage must stay concise; detailed evidence belongs in case studies');
+  assert.ok(text.split(/\s+/).length < 850, 'Homepage must stay concise; detailed evidence belongs in case studies');
 });
 
 test("unknown and machine-readable résumé routes stay private", async () => {
@@ -579,4 +580,20 @@ test("responses carry baseline security headers", async () => {
   assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
   assert.ok(response.headers.get("referrer-policy"));
+});
+
+test("landing hero leads with linked proof points and the merged outside contribution", async () => {
+  const { html } = await page("/");
+  const hero = html.slice(html.indexOf('id="hero-title"'), html.indexOf('class="hero-copy"'));
+  for (const figure of ["9.28", "79 tests", "55/55", "#2293"]) assert.ok(hero.includes(figure), `hero proof needs ${figure}`);
+  for (const href of ["https://pypi.org/project/evalbar/", "https://github.com/MilindDevX/skipq", "https://github.com/Nano-Collective/nanocoder/pull/2293"]) assert.ok(hero.includes(`href="${href}"`), `hero proof must link ${href}`);
+  for (const weak of ["LeetCode", "Codeforces"]) assert.ok(!html.includes(weak), `${weak} counts stay off the landing page`);
+  assert.ok(html.includes("Outside contributions"));
+  assert.equal((html.match(/CGPA: 9\.28\/10/g) || []).length, 1);
+});
+
+test("AI page links the live FeedbackOS app and shows the measured fix, its cost and evalbar's RAG and agent support", async () => {
+  const { html } = await page("/ai");
+  for (const href of ["https://feedbackos.vercel.app/", "https://github.com/MilindDevX/feedbackos"]) assert.ok(html.includes(`href="${href}"`), `AI page must link ${href}`);
+  for (const fact of ["9/11 to 11/11", "(+13% cost)", "agent tool calls", "RAG retrieval with recall@k"]) assert.ok(html.includes(fact), `AI page needs ${fact}`);
 });
