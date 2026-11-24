@@ -6,7 +6,7 @@ let path = CommandLine.arguments.dropFirst().first ?? "public/docs/Milind_Bansal
 guard let document = PDFDocument(url: URL(fileURLWithPath: path)) else { fatalError("Cannot open resume") }
 precondition(document.pageCount == 1, "Resume must fit one page")
 let text = document.string ?? ""
-for fact in ["Milind Bansal", "milindsk8r@gmail.com", "CGPA: 9.28 / 10", "skipq", "FeedbackOS", "MedMarket", "evalbar", "SKIP LOCKED", "Vercel Queues", "JWT", "C-MAPSS", "12 merged pull requests", "five-person", "Amazon ML Challenge 2026", "55 integration tests"] {
+for fact in ["Milind Bansal", "milindsk8r@gmail.com", "+91 62804 57165", "CGPA: 9.28 / 10", "skipq", "FeedbackOS", "MedMarket", "evalbar", "SKIP LOCKED", "Vercel Queues", "JWT", "C-MAPSS", "12 merged pull requests", "five-person", "Amazon ML Challenge 2026", "55 integration tests"] {
     precondition(text.localizedCaseInsensitiveContains(fact), "Missing selectable fact: \(fact)")
 }
 for stale in ["8 merged pull requests", "RouteLens", "BullMQ", "58-test", "year-long", "nst.rishihood.edu.in", "not employment"] {
