@@ -1,6 +1,6 @@
 // ABOUTME: Full-bleed AI portfolio contact finale with direct public destinations and no résumé placeholder.
 import { aiProfile } from "@/data/ai-portfolio";
-import { destinations, profile } from "@/data/portfolio";
+import { destinations, profile, publicProfile } from "@/data/portfolio";
 import styles from "./ai.module.css";
 
 export function AiContact() {
@@ -16,6 +16,7 @@ export function AiContact() {
         <p className={styles.contactInvitation}>{aiProfile.contact.invitation}</p>
         <nav className={styles.contactLinks} aria-label="Contact links">
           <a href={`mailto:${profile.email}`}><span>Email</span><strong>{profile.email}</strong></a>
+          <a href={publicProfile.phoneHref}><span>Phone</span><strong>{publicProfile.phone}</strong></a>
           <a href={destinations.github}><span>Code</span><strong>GitHub ↗</strong></a>
           <a href={destinations.linkedin}><span>Profile</span><strong>LinkedIn ↗</strong></a>
         </nav>

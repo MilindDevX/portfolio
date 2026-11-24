@@ -2,6 +2,8 @@ export const publicProfile = {
   name: "Milind Bansal",
   location: "India",
   email: "milindsk8r@gmail.com",
+  phone: "+91 62804 57165",
+  phoneHref: "tel:+916280457165",
   avatar: "/images/avatar/student-developer-portrait-v2.webp",
 } as const;
 

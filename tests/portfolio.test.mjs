@@ -597,3 +597,11 @@ test("AI page links the live FeedbackOS app and shows the measured fix, its cost
   for (const href of ["https://feedbackos.vercel.app/", "https://github.com/MilindDevX/feedbackos"]) assert.ok(html.includes(`href="${href}"`), `AI page must link ${href}`);
   for (const fact of ["9/11 to 11/11", "(+13% cost)", "agent tool calls", "RAG retrieval with recall@k"]) assert.ok(html.includes(fact), `AI page needs ${fact}`);
 });
+
+test("both editions show the phone number as a tap-to-call link", async () => {
+  for (const path of ["/", "/ai"]) {
+    const { html } = await page(path);
+    assert.ok(html.includes('href="tel:+916280457165"'), `${path} needs the tel: link`);
+    assert.ok(html.includes("+91 62804 57165"), `${path} needs the visible number`);
+  }
+});

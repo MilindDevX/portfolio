@@ -1190,7 +1190,7 @@
 
 .contactLinks {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr 0.7fr;
+  grid-template-columns: 1.3fr 1fr 0.7fr 0.7fr;
   margin-top: clamp(64px, 9vw, 120px);
   border-top: 1px solid var(--signal-rule);
   border-bottom: 1px solid var(--signal-rule);
